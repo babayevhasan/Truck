@@ -1,71 +1,35 @@
 .container {
     background-color: white;
     border-radius: 0.5rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
-  
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
   }
-  
-  .navigationButtons {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .navButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    background-color: #f3f4f6;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .navButton:hover {
-    background-color: #e5e7eb;
-  }
-  
   .notificationButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 2rem;
     height: 2rem;
     border-radius: 9999px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
   }
-  
   .notificationButton:hover {
     background-color: #f3f4f6;
   }
-  
   .content {
     padding: 1.5rem;
   }
-  
   .title {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-  }
-  
+  }  
   .tabs {
-    display: flex;
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 1.5rem;
   }
-  
   .tab {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
@@ -73,29 +37,23 @@
     color: #6b7280;
     background-color: transparent;
     border: none;
-    cursor: pointer;
     transition: color 0.2s;
   }
-  
   .tab:hover {
     color: #374151;
   }
-  
   .activeTab {
     color: #f97316;
     border-bottom: 2px solid #f97316;
   }
-  
   .filterContainer {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1rem;
-  }
-  
+  }  
   .selectWrapper {
     position: relative;
   }
-  
   .select {
     appearance: none;
     background-color: white;
@@ -105,13 +63,11 @@
     padding-right: 2.5rem;
     font-size: 0.875rem;
   }
-  
   .select:focus {
     outline: none;
     border-color: #f97316;
     box-shadow: 0 0 0 1px #f97316;
   }
-  
   .chevronDown {
     position: absolute;
     right: 0.5rem;
@@ -119,17 +75,14 @@
     transform: translateY(-50%);
     pointer-events: none;
   }
-  
   .tableContainer {
     overflow-x: auto;
   }
-  
   .table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
   }
-  
   .table th {
     padding: 0.75rem 1.5rem;
     text-align: left;
@@ -146,12 +99,7 @@
     color: #111827;
     border-top: 1px solid #e5e7eb;
   }
-  
-  .dateCell {
-    display: flex;
-    align-items: center;
-  }
-  
+
   .calendar {
     margin-right: 0.25rem;
     color: #3b82f6;
@@ -205,7 +153,6 @@
   .pagination {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-top: 1.5rem;
   }
   
@@ -229,8 +176,9 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 10px;
+    border-radius: 50px;
   }
-  
   .pageNumber {
     display: flex;
     align-items: center;
@@ -243,12 +191,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-  }
-  
-  .pageNumber:hover {
-    background-color: #f3f4f6;
-  }
-  
+  } 
   .activePage {
     background-color: #1f2937;
     color: white;
@@ -262,9 +205,6 @@
     display: inline-block;
     width: 1rem;
     height: 1rem;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
   }
   
   .chevronLeft {
