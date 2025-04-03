@@ -1,0 +1,240 @@
+.container {
+    background-color: white;
+    border-radius: 0.5rem;
+    min-height: calc(100vh - 3rem);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }  
+  .navigationButtons {
+    display: flex;
+    gap: 0.5rem;
+  }  
+  .navButton {
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navButton:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .notificationButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .notificationButton:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .titleSection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .backButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .blockButton,
+  .cancelButton,
+  .approveButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;  
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .blockButton {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+  }
+  
+  .blockButton:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .cancelButton {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+  }
+  
+  .cancelButton:hover {
+    background-color: #dc2626;
+  }
+  
+  .approveButton {
+    background-color: #10b981;
+    color: white;
+    border: none;
+  }
+  
+  .approveButton:hover {
+    background-color: #059669;
+  }
+  
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid #f97316;
+  }
+  
+  .infoGrid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .infoRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .infoLabel {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .infoValue {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+  
+  .routesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .routeItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .routePoint {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 30%;
+  }
+  
+  .locationIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+  
+  .routeInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .routeDate {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+  
+  .routeLocation {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .routeArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  .routeArrow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e5e7eb;
+    z-index: 0;
+  }
+  
+  .truckIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #f97316;
+    background-color: white;
+    padding: 0.25rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .infoGrid {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3rem;
+    }
+  }
+  
+  
