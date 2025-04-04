@@ -1,8 +1,11 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./VehicleAnnouncement.module.css"
+import Modal from "../../components/ui/Modal/Modal"
 
+// İkon bileşenleri
 const ChevronLeftIcon = () => (
   <svg
     className={styles.icon}
@@ -30,6 +33,21 @@ const ChevronRightIcon = () => (
     strokeLinejoin="round"
   >
     <polyline points="9 18 15 12 9 6" />
+  </svg>
+)
+
+const ChevronDownIcon = () => (
+  <svg
+    className={styles.icon}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="6 9 12 15 18 9" />
   </svg>
 )
 
@@ -131,14 +149,52 @@ const TruckIcon = () => (
   </svg>
 )
 
+const PlusIcon = () => (
+  <svg
+    className={styles.plusIcon}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+)
+
 export default function VehicleAnnouncement() {
   const navigate = useNavigate()
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false)
+  const [isBlockModalOpen, setIsBlockModalOpen] = useState(false)
+  const [reasons, setReasons] = useState([{ id: 1, value: "" }])
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const handleBack = () => {
     navigate("/vehicle-announcements")
   }
 
-  // masin bilgileri
+  const handleAddReason = () => {
+    setReasons([...reasons, { id: reasons.length + 1, value: "" }])
+  }
+
+  const handleReasonChange = (id, value) => {
+    const updatedReasons = reasons.map((reason) => (reason.id === id ? { ...reason, value } : reason))
+    setReasons(updatedReasons)
+  }
+
+  // Araç bilgileri
   const vehicleInfo = {
     marka: "DAF",
     type: "Tankerli",
@@ -150,7 +206,7 @@ export default function VehicleAnnouncement() {
     height: "7 m",
   }
 
-  // dasinma noqtesi bilgileri
+  // Taşıma rotası bilgileri
   const transportRoutes = [
     {
       startDate: "12.12.2024",
@@ -192,11 +248,11 @@ export default function VehicleAnnouncement() {
           </button>
 
           <div className={styles.actionButtons}>
-            <button className={styles.blockButton}>
+            <button className={styles.blockButton} onClick={() => setIsBlockModalOpen(true)}>
               <BlockIcon />
               <span>Elanı blokla</span>
             </button>
-            <button className={styles.cancelButton}>
+            <button className={styles.cancelButton} onClick={() => setIsCancelModalOpen(true)}>
               <CancelIcon />
               <span>Elanı ləğv et</span>
             </button>
@@ -246,7 +302,7 @@ export default function VehicleAnnouncement() {
         </div>
 
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Daşınma ölkələri:</h2>
+          <h2 className={styles.sectionTitle}>Daşınma əlkələri:</h2>
           <div className={styles.routesContainer}>
             {transportRoutes.map((route, index) => (
               <div key={index} className={styles.routeItem}>
@@ -274,7 +330,107 @@ export default function VehicleAnnouncement() {
           </div>
         </div>
       </div>
+
+      {/* İptal Etme Modalı */}
+      <Modal
+        isOpen={isCancelModalOpen}
+        onClose={() => setIsCancelModalOpen(false)}
+        title="Elanı ləğv etmə səbəbini qeyd edin"
+      >
+        <div className={styles.modalContent}>
+          <h3 className={styles.modalSubtitle}>Yük elanı</h3>
+
+          {reasons.map((reason) => (
+            <div key={reason.id} className={styles.selectWrapper}>
+              <select
+                className={styles.select}
+                value={reason.value}
+                onChange={(e) => handleReasonChange(reason.id, e.target.value)}
+              >
+                <option value="" disabled>
+                  Səbəbi qeyd et
+                </option>
+                <option value="reason1">Yanlış məlumat</option>
+                <option value="reason2">Qadağan olunmuş məhsul</option>
+                <option value="reason3">Digər səbəb</option>
+              </select>
+              <ChevronDownIcon />
+            </div>
+          ))}
+
+          <button className={styles.addReasonButton} onClick={handleAddReason}>
+            <PlusIcon />
+            <span>Yenisini əlavə et</span>
+          </button>
+
+          <div className={styles.modalActions}>
+            <button className={styles.modalCancelButton} onClick={() => setIsCancelModalOpen(false)}>
+              Ləğv et
+            </button>
+            <button
+              className={styles.modalConfirmButton}
+              onClick={() => {
+                // İptal işlemi burada gerçekleştirilecek
+                setIsCancelModalOpen(false)
+              }}
+            >
+              Təsdiq et
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Bloke Etme Modalı */}
+      <Modal
+        isOpen={isBlockModalOpen}
+        onClose={() => setIsBlockModalOpen(false)}
+        title="Elanı bloklama səbəbini qeyd edin"
+      >
+        <div className={styles.modalContent}>
+          <h3 className={styles.modalSubtitle}>Yük elanı</h3>
+
+          {reasons.map((reason) => (
+            <div key={reason.id} className={styles.selectWrapper}>
+              <select
+                className={styles.select}
+                value={reason.value}
+                onChange={(e) => handleReasonChange(reason.id, e.target.value)}
+              >
+                <option value="" disabled>
+                  Səbəbi qeyd et
+                </option>
+                <option value="reason1">Yanlış məlumat</option>
+                <option value="reason2">Qadağan olunmuş məhsul</option>
+                <option value="reason3">Digər səbəb</option>
+              </select>
+              <ChevronDownIcon />
+            </div>
+          ))}
+
+          <button className={styles.addReasonButton} onClick={handleAddReason}>
+            <PlusIcon />
+            <span>Yenisini əlavə et</span>
+          </button>
+
+          <div className={styles.modalActions}>
+            <button className={styles.modalCancelButton} onClick={() => setIsBlockModalOpen(false)}>
+              Ləğv et
+            </button>
+            <button
+              className={styles.modalConfirmButton}
+              onClick={() => {
+                // Bloke işlemi burada gerçekleştirilecek
+                setIsBlockModalOpen(false)
+              }}
+            >
+              Təsdiq et
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
+
+
 
