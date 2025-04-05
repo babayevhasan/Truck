@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 import styles from "./VehicleAnnouncement.module.css"
 import Modal from "../../components/ui/Modal/Modal"
 
-// İkon bileşenleri
 const ChevronLeftIcon = () => (
   <svg
     className={styles.icon}
@@ -194,7 +193,6 @@ export default function VehicleAnnouncement() {
     setReasons(updatedReasons)
   }
 
-  // Araç bilgileri
   const vehicleInfo = {
     marka: "DAF",
     type: "Tankerli",
@@ -206,7 +204,6 @@ export default function VehicleAnnouncement() {
     height: "7 m",
   }
 
-  // Taşıma rotası bilgileri
   const transportRoutes = [
     {
       startDate: "12.12.2024",
@@ -331,7 +328,6 @@ export default function VehicleAnnouncement() {
         </div>
       </div>
 
-      {/* İptal Etme Modalı */}
       <Modal
         isOpen={isCancelModalOpen}
         onClose={() => setIsCancelModalOpen(false)}
@@ -370,7 +366,6 @@ export default function VehicleAnnouncement() {
             <button
               className={styles.modalConfirmButton}
               onClick={() => {
-                // İptal işlemi burada gerçekleştirilecek
                 setIsCancelModalOpen(false)
               }}
             >
@@ -380,7 +375,6 @@ export default function VehicleAnnouncement() {
         </div>
       </Modal>
 
-      {/* Bloke Etme Modalı */}
       <Modal
         isOpen={isBlockModalOpen}
         onClose={() => setIsBlockModalOpen(false)}
@@ -419,7 +413,6 @@ export default function VehicleAnnouncement() {
             <button
               className={styles.modalConfirmButton}
               onClick={() => {
-                // Bloke işlemi burada gerçekleştirilecek
                 setIsBlockModalOpen(false)
               }}
             >

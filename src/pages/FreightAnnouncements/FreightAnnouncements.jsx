@@ -135,7 +135,7 @@ export default function FreightAnnouncements() {
       </div>
 
       <div className={styles.content}>
-        <h1 className={styles.title}>Yük maşın elanları</h1>
+        <h1 className={styles.title}>Yük elanları</h1>
 
         <div className={styles.tabs}>
           <button

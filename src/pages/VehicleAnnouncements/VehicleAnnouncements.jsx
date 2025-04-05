@@ -88,7 +88,6 @@ export default function VehicleAnnouncements() {
   const [currentPage, setCurrentPage] = useState(1)
   const navigate = useNavigate()
 
-  // Örnek veri
   const vehicleData = [
     {
       id: 1,
@@ -224,14 +223,6 @@ export default function VehicleAnnouncements() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.navigationButtons}>
-          <button className={styles.navButton}>
-            <ChevronLeftIcon />
-          </button>
-          <button className={styles.navButton}>
-            <ChevronRightIcon />
-          </button>
-        </div>
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
             <BellIcon />
@@ -243,12 +234,12 @@ export default function VehicleAnnouncements() {
         <h1 className={styles.title}>Yük maşını elanları</h1>
 
         <div className={styles.tabs}>
-          <button
+          {/* <button
             className={`${styles.tab} ${activeTab === "cards" ? styles.activeTab : ""}`}
             onClick={() => setActiveTab("cards")}
           >
             Elan kartları
-          </button>
+          </button> */}
           <button
             className={`${styles.tab} ${activeTab === "table" ? styles.activeTab : ""}`}
             onClick={() => setActiveTab("table")}
@@ -316,8 +307,9 @@ export default function VehicleAnnouncements() {
             </table>
           </div>
         )}
+        
 
-        {activeTab === "cards" && (
+        {/* {activeTab === "cards" && (
           <div className={styles.cardsContainer}>
             {vehicleData.map((item) => (
               <div key={item.id} className={styles.card} onClick={() => handleRowClick(item.id)}>
@@ -357,8 +349,9 @@ export default function VehicleAnnouncements() {
               </div>
             ))}
           </div>
-        )}
-{/* sjsj */}
+        )} */}
+
+
         <div className={styles.pagination}>
           <button className={styles.paginationButton}>
             <ChevronLeftIcon />

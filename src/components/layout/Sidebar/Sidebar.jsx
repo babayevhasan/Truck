@@ -1,50 +1,9 @@
-// import { useLocation } from "react-router-dom"
-// import styles from "./Sidebar.module.css"
-
-// export default function Sidebar() {
-//   const location = useLocation()
-
-//   const isActive = (path) => {
-//     return location.pathname === path
-//   }
-
-//   const navItems = [
-//     { icon: "dashboard", label: "Dashboard", path: "/" },
-//     { icon: "settings", label: "Seçim Konfiqurasiyası", path: "/configuration" },
-//     { icon: "package", label: "Yük elanları", path: "/freight-announcements" },
-//     { icon: "truck", label: "Yük maşını elanları", path: "/vehicle-announcements" },
-//     { icon: "message", label: "Mesajlar", path: "/messages" },
-//     { icon: "users", label: "Operatorlar", path: "/operators" },
-//     { icon: "user", label: "İstifadəçilər", path: "/users" },
-//     { icon: "chart", label: "Tranzaksiya", path: "/transactions" },
-//   ]
-
-//   return (
-//     <aside className={styles.sidebar}>
-//       <nav className={styles.nav}>
-//         <ul className={styles.navList}>
-//           {navItems.map((item, index) => (
-//             <li key={index} className={styles.navItem}>
-//               <a href={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
-//                 <span className={`${styles.icon} ${styles[item.icon]}`}></span>
-//                 {item.label}
-//               </a>
-//             </li>
-//           ))}
-//         </ul>
-//       </nav>
-//     </aside>
-//   )
-// }
-
-
 "use client"
 
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import styles from "./Sidebar.module.css"
 
-// İkon bileşenleri
 const DashboardIcon = () => (
   <svg
     className={styles.icon}
@@ -56,6 +15,7 @@ const DashboardIcon = () => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
+
     <rect x="3" y="3" width="7" height="7" />
     <rect x="14" y="3" width="7" height="7" />
     <rect x="14" y="14" width="7" height="7" />
@@ -114,6 +74,8 @@ const TruckIcon = () => (
     <circle cx="18.5" cy="18.5" r="2.5" />
   </svg>
 )
+
+
 
 const MessageIcon = () => (
   <svg
@@ -251,7 +213,6 @@ export default function Sidebar() {
     return location.pathname === path
   }
 
-  // İkon bileşenlerini eşleştirme
   const getIcon = (iconName) => {
     switch (iconName) {
       case "dashboard":
@@ -294,13 +255,9 @@ export default function Sidebar() {
     setIsCollapsed(!isCollapsed)
   }
 
-  // Desktop sidebar
   if (windowWidth > 768) {
     return (
       <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
-        <div className={styles.logo}>
-          <h2 className={styles.logoText}>{!isCollapsed && "Logistics"}</h2>
-        </div>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             {navItems.map((item, index) => (
@@ -322,17 +279,14 @@ export default function Sidebar() {
     )
   }
 
-  // Mobil görünüm için sadece burger menü butonu döndürüyoruz
   return (
     <>
       <button className={styles.burgerButton} onClick={toggleMobileMenu}>
         <MenuIcon />
       </button>
 
-      {/* Mobil menü */}
       <div className={`${styles.mobileSidebar} ${isMobileMenuOpen ? styles.mobileSidebarOpen : ""}`}>
         <div className={styles.mobileMenuHeader}>
-          <h2 className={styles.mobileLogoText}>Logistics</h2>
           <button className={styles.mobileCloseButton} onClick={toggleMobileMenu}>
             <CloseIcon />
           </button>
