@@ -2,6 +2,9 @@
 
 import { useState } from "react"
 import styles from "./FreightAnnouncements.module.css"
+import TruckIcon from '../../assets/icons/truckorange.svg?react';
+
+
 
 export default function FreightAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
@@ -253,6 +256,7 @@ export default function FreightAnnouncements() {
                     <div className={styles.date}>{item.fromDate}</div>
                   </div>
 
+                  <TruckIcon />
                   <div className={styles.routeLine}></div>
                   <div className={`${styles.routeDot} ${styles.routeDotStart}`}></div>
                   <div className={`${styles.routeDot} ${styles.routeDotEnd}`}></div>

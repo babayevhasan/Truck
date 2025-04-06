@@ -22,6 +22,7 @@
   background-color: #f3f4f6;
 }
 
+
 .content {
   padding: 1.5rem;
 }
@@ -65,6 +66,7 @@
 .selectWrapper {
   position: relative;
 }
+
 
 .select {
   appearance: none;

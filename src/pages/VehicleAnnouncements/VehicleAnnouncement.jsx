@@ -4,6 +4,13 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./VehicleAnnouncement.module.css"
 import Modal from "../../components/ui/Modal/Modal"
+import BellIcon from '../../assets/icons/bell.svg?react';
+import BlockIcon from '../../assets/icons/block.svg?react';
+import CancelIcon from '../../assets/icons/cancel.svg?react';
+import CheckIcon from '../../assets/icons/check.svg?react';
+import TruckIcon from '../../assets/icons/truckorange.svg?react';
+import LocationIcon from '../../assets/icons/location.svg?react';
+
 
 const ChevronLeftIcon = () => (
   <svg
@@ -47,104 +54,6 @@ const ChevronDownIcon = () => (
     strokeLinejoin="round"
   >
     <polyline points="6 9 12 15 18 9" />
-  </svg>
-)
-
-const BellIcon = () => (
-  <svg
-    className={styles.icon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-  </svg>
-)
-
-const BlockIcon = () => (
-  <svg
-    className={styles.icon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-  </svg>
-)
-
-const CancelIcon = () => (
-  <svg
-    className={styles.icon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="15" y1="9" x2="9" y2="15" />
-    <line x1="9" y1="9" x2="15" y2="15" />
-  </svg>
-)
-
-const CheckIcon = () => (
-  <svg
-    className={styles.icon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
-
-const LocationIcon = () => (
-  <svg
-    className={styles.locationIcon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-    <circle cx="12" cy="10" r="3" />
-  </svg>
-)
-
-const TruckIcon = () => (
-  <svg
-    className={styles.truckIcon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="1" y="3" width="15" height="13" />
-    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-    <circle cx="5.5" cy="18.5" r="2.5" />
-    <circle cx="18.5" cy="18.5" r="2.5" />
   </svg>
 )
 
@@ -402,7 +311,7 @@ export default function VehicleAnnouncement() {
           ))}
 
           <button className={styles.addReasonButton} onClick={handleAddReason}>
-            <PlusIcon />
+            <PlusIcon />  
             <span>Yenisini əlavə et</span>
           </button>
 
