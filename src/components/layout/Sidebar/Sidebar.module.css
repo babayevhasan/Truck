@@ -1,19 +1,24 @@
-  .sidebar {
-    width: 16rem;
+   .sidebar {
+    width: 4.5rem; 
     background-color: white;
     border-right: 1px solid #e5e7eb;
-    position: relative;
-    height: auto;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 100vh;
     transition: width 0.3s ease;
+    z-index: 100; 
+    overflow-y: auto; 
   }
   
-  .collapsed {
-    width: 4.5rem;
+  .expanded {
+    width: 16rem; 
   }
+  
   .nav {
     padding: 5rem 0;
     overflow-y: auto;
-    height: calc(100vh - 4rem - 4rem); 
+    height: calc(100vh - 4rem - 4rem);
   }
   
   .navList {
@@ -40,15 +45,18 @@
   .navLink span {
     margin-left: 0.75rem;
     transition: opacity 0.2s;
+    opacity: 0; 
+    display: none; 
   }
   
-  .collapsed .navLink {
-    justify-content: center;
-    padding: 0.75rem 0;
+  .expanded .navLink {
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
   }
   
-  .collapsed .navLink span {
-    display: none;
+  .expanded .navLink span {
+    opacity: 1;
+    display: inline; 
   }
   
   .navLink:hover {
@@ -68,14 +76,14 @@
   
   .collapseButton {
     position: absolute;
-    right:1rem;
+    right: 1rem;
     width: 100%;
     display: flex;
     justify-content: center;
   }
   
-  .collapsed .collapseButton {
-    left: 0;
+  .expanded .collapseButton {
+    left: auto;
   }
   
   .iconButton {
@@ -93,7 +101,7 @@
     transition: transform 0.3s ease;
   }
   
-  .collapsed .iconButton {
+  .expanded .iconButton {
     transform: rotate(180deg);
   }
   
@@ -102,12 +110,11 @@
     color: white;
   }
   
-  /* Mobile Styles */
   .burgerButton {
-    position: absolute;
+    position: fixed;
     top: 0.75rem;
     left: 0.75rem;
-    z-index: 50;
+    z-index: 150; 
     display: flex;
     align-items: center;
     justify-content: center;

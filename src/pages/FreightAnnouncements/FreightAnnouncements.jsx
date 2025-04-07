@@ -1,14 +1,42 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import styles from "./FreightAnnouncements.module.css"
-import TruckIcon from '../../assets/icons/truckorange.svg?react';
-
-
+import TruckIcon from "../../assets/icons/truckorange.svg?react"
+import Bell from "../../assets/icons/bell.svg?react"
+import LeftNav from "../../assets/icons/leftnav.svg?react"
+import RightNav from "../../assets/icons/rightnav.svg?react"
 
 export default function FreightAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
   const [currentPage, setCurrentPage] = useState(1)
+  const [isSelectOpen, setIsSelectOpen] = useState(false)
+  const [selectedStatus, setSelectedStatus] = useState("Status seç")
+  const selectRef = useRef(null)
+
+  const statusOptions = ["Status seç", "Aktiv", "Ləğv", "Blok", "Gözləmədə"]
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsSelectOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  const toggleSelect = () => {
+    setIsSelectOpen(!isSelectOpen)
+  }
+
+  const handleSelectOption = (option) => {
+    setSelectedStatus(option)
+    setIsSelectOpen(false)
+  }
 
   const freightData = [
     {
@@ -127,12 +155,23 @@ export default function FreightAnnouncements() {
     }
   }
 
+  const filteredData =
+    selectedStatus === "Status seç" ? freightData : freightData.filter((item) => item.status === selectedStatus)
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
+        <div className={styles.backornext}>
+          <button>
+            <LeftNav />
+          </button>
+          <button>
+            <RightNav />
+          </button>
+        </div>
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
-            <span className={`${styles.icon} ${styles.bell}`}></span>
+            <Bell />
           </button>
         </div>
       </div>
@@ -156,15 +195,27 @@ export default function FreightAnnouncements() {
         </div>
 
         <div className={styles.filterContainer}>
-          <div className={styles.selectWrapper}>
-            <select className={styles.select}>
-              <option>Status seç</option>
-              <option>Aktiv</option>
-              <option>Ləğv</option>
-              <option>Blok</option>
-              <option>Gözləmədə</option>
-            </select>
-            <span className={`${styles.icon} ${styles.chevronDown}`}></span>
+          <div className={styles.customSelectWrapper} ref={selectRef}>
+            <div
+              className={`${styles.customSelect} ${isSelectOpen ? styles.customSelectOpen : ""}`}
+              onClick={toggleSelect}
+            >
+              <span className={styles.customSelectText}>{selectedStatus}</span>
+              <span className={`${styles.icon} ${styles.chevronDown} ${isSelectOpen ? styles.rotate : ""}`}></span>
+            </div>
+            {isSelectOpen && (
+              <div className={styles.customSelectOptions}>
+                {statusOptions.map((option, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.customSelectOption} ${selectedStatus === option ? styles.customSelectOptionSelected : ""}`}
+                    onClick={() => handleSelectOption(option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -183,7 +234,7 @@ export default function FreightAnnouncements() {
                 </tr>
               </thead>
               <tbody>
-                {freightData.map((item) => (
+                {filteredData.map((item) => (
                   <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>
@@ -217,7 +268,7 @@ export default function FreightAnnouncements() {
 
         {activeTab === "cards" && (
           <div className={styles.cardsContainer}>
-            {freightData.map((item) => (
+            {filteredData.map((item) => (
               <div key={item.id} className={styles.card}>
                 <div className={styles.cardHeader}>
                   <div
@@ -277,27 +328,30 @@ export default function FreightAnnouncements() {
           </div>
         )}
         <div className={styles.pagination}>
-          <button className={styles.paginationButton}>
-            <span className={`${styles.icon} ${styles.chevronLeft}`}></span>
-          </button>
+          <div className={styles.paginations}>
+            <button className={styles.paginationButton}>
+              <span className={`${styles.icon} ${styles.chevronLeft}`}></span>
+            </button>
 
-          <div className={styles.pageNumbers}>
-            <button className={`${styles.pageNumber} ${styles.activePage}`}>1</button>
-            {[2, 3, 4, 5].map((page) => (
-              <button key={page} className={styles.pageNumber}>
-                {page}
-              </button>
-            ))}
-            <span className={styles.ellipsis}>...</span>
-            <button className={styles.pageNumber}>21</button>
+            <div className={styles.pageNumbers}>
+              <button className={`${styles.pageNumber} ${styles.activePage}`}>1</button>
+              {[2, 3, 4, 5].map((page) => (
+                <button key={page} className={styles.pageNumber}>
+                  {page}
+                </button>
+              ))}
+              <span className={styles.ellipsis}>...</span>
+              <button className={styles.pageNumber}>21</button>
+            </div>
+
+            <button className={styles.paginationButton}>
+              <span className={`${styles.icon} ${styles.chevronRight}`}></span>
+            </button>
           </div>
-
-          <button className={styles.paginationButton}>
-            <span className={`${styles.icon} ${styles.chevronRight}`}></span>
-          </button>
         </div>
       </div>
     </div>
   )
 }
+
 

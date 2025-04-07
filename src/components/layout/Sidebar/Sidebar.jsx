@@ -3,16 +3,15 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import styles from "./Sidebar.module.css"
-import IconSvg from '../../../assets/icons/icon.svg?react';
-import DashboardIcon from '../../../assets/icons/dashboard.svg?react';
-import SettingsIcon from '../../../assets/icons/settings.svg?react';
-import PackageIcon from '../../../assets/icons/package.svg?react';
-import TruckIcon from '../../../assets/icons/truck.svg?react';
-import MessageIcon from '../../../assets/icons/message.svg?react';
-import UsersIcon from '../../../assets/icons/users.svg?react';
-import UserIcon from '../../../assets/icons/user.svg?react';
-import ChevronLeftIcon from '../../../assets/icons/left.svg?react';
-
+import IconSvg from "../../../assets/icons/icon.svg?react"
+import DashboardIcon from "../../../assets/icons/dashboard.svg?react"
+import SettingsIcon from "../../../assets/icons/settings.svg?react"
+import PackageIcon from "../../../assets/icons/package.svg?react"
+import TruckIcon from "../../../assets/icons/truck.svg?react"
+import MessageIcon from "../../../assets/icons/message.svg?react"
+import UsersIcon from "../../../assets/icons/users.svg?react"
+import UserIcon from "../../../assets/icons/user.svg?react"
+import ChevronLeftIcon from "../../../assets/icons/left.svg?react"
 
 const MenuIcon = () => (
   <svg
@@ -47,12 +46,15 @@ const CloseIcon = () => (
   </svg>
 )
 
-export default function Sidebar() {
+export default function Sidebar({ onToggle,}) {
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
+
+
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
@@ -64,6 +66,12 @@ export default function Sidebar() {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  useEffect(() => {
+    if (onToggle) {
+      onToggle(isExpanded)
+    }
+  }, [isExpanded, onToggle])
 
   const isActive = (path) => {
     return location.pathname === path
@@ -106,28 +114,33 @@ export default function Sidebar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
-
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed)
+  
+  const toggleExpand = () => {
+    const newExpandedState = !isExpanded
+    setIsExpanded(newExpandedState)
+    if (onToggle) {
+      onToggle(newExpandedState)
+    }
   }
-
+  
+  
   if (windowWidth > 768) {
     return (
-      <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
+      <aside className={`${styles.sidebar} ${isExpanded ? styles.expanded : ""}`}>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             {navItems.map((item, index) => (
               <li key={index} className={styles.navItem}>
                 <a href={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
                   {getIcon(item.icon)}
-                  {!isCollapsed && <span>{item.label}</span>}
+                  <span>{item.label}</span>
                 </a>
               </li>
             ))}
           </ul>
         </nav>
         <div className={styles.collapseButton}>
-          <button className={styles.iconButton} onClick={toggleCollapse}>
+          <button className={styles.iconButton} onClick={toggleExpand}>
             <ChevronLeftIcon />
           </button>
         </div>

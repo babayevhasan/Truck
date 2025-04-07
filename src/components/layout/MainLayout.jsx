@@ -6,6 +6,7 @@ import styles from "./MainLayout.module.css"
 
 export default function MainLayout({ children }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,9 +17,13 @@ export default function MainLayout({ children }) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  const handleSidebarToggle = (expanded) => {
+    setIsSidebarExpanded(expanded)
+  }
+
   return (
-    <div className={styles.container}>
-      <Sidebar />
+    <div className={`${styles.container} ${isSidebarExpanded ? styles.sidebarExpanded : ""}`}>
+      <Sidebar onToggle={handleSidebarToggle} />
       <main className={styles.main}>{children}</main>
     </div>
   )

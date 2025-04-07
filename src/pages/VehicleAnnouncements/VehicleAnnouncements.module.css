@@ -1,4 +1,4 @@
-.container {
+ .container {
   background-color: white;
   border-radius: 0.5rem;
 }
@@ -24,7 +24,11 @@
 .notificationButton:hover {
   background-color: #f3f4f6;
 }
-
+.backornext button {
+  border: none;
+  margin: 0px 5px;
+  background-color: inherit;
+}
 .content {
   padding: 1.5rem;
 }
@@ -84,6 +88,70 @@
   outline: none;
   border-color: #f97316;
   box-shadow: 0 0 0 1px #f97316;
+}
+
+.customSelectWrapper {
+  position: relative;
+  width: 200px;
+  z-index: 10;
+}
+
+.customSelect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.customSelect:hover {
+  border-color: #9ca3af;
+}
+
+.customSelectOpen {
+  border-color: #f97316;
+}
+
+.customSelectText {
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.customSelectOptions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.customSelectOption {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.customSelectOption:hover {
+  background-color: #f3f4f6;
+}
+
+.customSelectOptionSelected {
+  background-color: #f97316;
+  color: white;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 
 .icon {
@@ -159,16 +227,21 @@
 .statusPending {
   color: #f59e0b;
 }
-
 .pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 1.5rem;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   gap: 0.5rem;
 }
-
+.paginations {
+  border: solid 1px rgb(221, 221, 221);
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  border-radius: 999px;
+}
 .paginationButton {
   display: flex;
   align-items: center;
@@ -176,8 +249,8 @@
   width: 2rem;
   height: 2rem;
   border-radius: 9999px;
-  border: 1px solid #d1d5db;
-  background-color: white;
+  border: none;
+  background-color: initial;
   cursor: pointer;
 }
 
@@ -204,11 +277,6 @@
   border: none;
   cursor: pointer;
 }
-
-.pageNumber:hover {
-  background-color: #f3f4f6;
-}
-
 .activePage {
   background-color: #1f2937;
   color: white;
@@ -217,4 +285,5 @@
 .ellipsis {
   color: #6b7280;
 }
+
 

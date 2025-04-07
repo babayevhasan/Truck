@@ -8,39 +8,12 @@ import BellIcon from '../../assets/icons/bell.svg?react';
 import BlockIcon from '../../assets/icons/block.svg?react';
 import CancelIcon from '../../assets/icons/cancel.svg?react';
 import CheckIcon from '../../assets/icons/check.svg?react';
-import TruckIcon from '../../assets/icons/truckorange.svg?react';
+import TruckIcon from '../../assets/icons/truckabout.svg?react';
 import LocationIcon from '../../assets/icons/location.svg?react';
+import ChevronLeftIcon from '../../assets/icons/leftnav.svg?react';
+import ChevronRightIcon from '../../assets/icons/rightnav.svg?react';
+import Back from '../../assets/icons/back.svg?react';
 
-
-const ChevronLeftIcon = () => (
-  <svg
-    className={styles.icon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-)
-
-const ChevronRightIcon = () => (
-  <svg
-    className={styles.icon}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="9 18 15 12 9 6" />
-  </svg>
-)
 
 const ChevronDownIcon = () => (
   <svg
@@ -149,8 +122,8 @@ export default function VehicleAnnouncement() {
       <div className={styles.content}>
         <div className={styles.titleSection}>
           <button className={styles.backButton} onClick={handleBack}>
-            <ChevronLeftIcon />
-            <span>Elan haqqında</span>
+            <Back />
+            <span> Elan haqqında</span>
           </button>
 
           <div className={styles.actionButtons}>

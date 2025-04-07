@@ -350,7 +350,6 @@
   background-color: #ea580c;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .titleSection {
     flex-direction: column;

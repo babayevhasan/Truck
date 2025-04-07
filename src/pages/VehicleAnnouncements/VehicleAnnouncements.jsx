@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./VehicleAnnouncements.module.css"
-import CalendarIcon from '../../assets/icons/calendar.svg?react';
-import BellIcon from '../../assets/icons/bell.svg?react';
-
-
+import CalendarIcon from "../../assets/icons/calendar.svg?react"
+import BellIcon from "../../assets/icons/bell.svg?react"
+import LeftNav from "../../assets/icons/leftnav.svg?react"
+import RightNav from "../../assets/icons/rightnav.svg?react"
 
 const ChevronLeftIcon = () => (
   <svg
@@ -55,7 +55,34 @@ const ChevronDownIcon = () => (
 export default function VehicleAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
   const [currentPage, setCurrentPage] = useState(1)
+  const [isSelectOpen, setIsSelectOpen] = useState(false)
+  const [selectedStatus, setSelectedStatus] = useState("Status seç")
+  const selectRef = useRef(null)
   const navigate = useNavigate()
+
+  const statusOptions = ["Status seç", "Aktiv", "Ləğv", "Blok", "Gözləmədə"]
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsSelectOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  const toggleSelect = () => {
+    setIsSelectOpen(!isSelectOpen)
+  }
+
+  const handleSelectOption = (option) => {
+    setSelectedStatus(option)
+    setIsSelectOpen(false)
+  }
 
   const vehicleData = [
     {
@@ -189,9 +216,20 @@ export default function VehicleAnnouncements() {
     navigate(`/vehicle-announcements/${id}`)
   }
 
+  const filteredData =
+    selectedStatus === "Status seç" ? vehicleData : vehicleData.filter((item) => item.status === selectedStatus)
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
+        <div className={styles.backornext}>
+          <button>
+            <LeftNav />
+          </button>
+          <button>
+            <RightNav />
+          </button>
+        </div>
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
             <BellIcon />
@@ -204,21 +242,35 @@ export default function VehicleAnnouncements() {
 
         <div className={styles.tabs}>
           <button
-            className={`${styles.tab} ${activeTab === "table" ? styles.activeTab : ""}`}onClick={() => setActiveTab("table")}>
+            className={`${styles.tab} ${activeTab === "table" ? styles.activeTab : ""}`}
+            onClick={() => setActiveTab("table")}
+          >
             Elan cədvəli
           </button>
         </div>
 
         <div className={styles.filterContainer}>
-          <div className={styles.selectWrapper}>
-            <select className={styles.select}>
-              <option>Status seç</option>
-              <option>Aktiv</option>
-              <option>Ləğv</option>
-              <option>Blok</option>
-              <option>Gözləmədə</option>
-            </select>
-            <ChevronDownIcon />
+          <div className={styles.customSelectWrapper} ref={selectRef}>
+            <div
+              className={`${styles.customSelect} ${isSelectOpen ? styles.customSelectOpen : ""}`}
+              onClick={toggleSelect}
+            >
+              <span className={styles.customSelectText}>{selectedStatus}</span>
+              <ChevronDownIcon className={`${isSelectOpen ? styles.rotate : ""}`} />
+            </div>
+            {isSelectOpen && (
+              <div className={styles.customSelectOptions}>
+                {statusOptions.map((option, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.customSelectOption} ${selectedStatus === option ? styles.customSelectOptionSelected : ""}`}
+                    onClick={() => handleSelectOption(option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -237,7 +289,7 @@ export default function VehicleAnnouncements() {
                 </tr>
               </thead>
               <tbody>
-                {vehicleData.map((item) => (
+                {filteredData.map((item) => (
                   <tr key={item.id} onClick={() => handleRowClick(item.id)} className={styles.tableRow}>
                     <td>{item.id}</td>
                     <td>
@@ -269,27 +321,30 @@ export default function VehicleAnnouncements() {
           </div>
         )}
         <div className={styles.pagination}>
-          <button className={styles.paginationButton}>
-            <ChevronLeftIcon />
-          </button>
+          <div className={styles.paginations}>
+            <button className={styles.paginationButton}>
+              <ChevronLeftIcon />
+            </button>
 
-          <div className={styles.pageNumbers}>
-            <button className={`${styles.pageNumber} ${styles.activePage}`}>1</button>
-            {[2, 3, 4, 5].map((page) => (
-              <button key={page} className={styles.pageNumber}>
-                {page}
-              </button>
-            ))}
-            <span className={styles.ellipsis}>...</span>
-            <button className={styles.pageNumber}>21</button>
+            <div className={styles.pageNumbers}>
+              <button className={`${styles.pageNumber} ${styles.activePage}`}>1</button>
+              {[2, 3, 4, 5].map((page) => (
+                <button key={page} className={styles.pageNumber}>
+                  {page}
+                </button>
+              ))}
+              <span className={styles.ellipsis}>...</span>
+              <button className={styles.pageNumber}>21</button>
+            </div>
+
+            <button className={styles.paginationButton}>
+              <ChevronRightIcon />
+            </button>
           </div>
-
-          <button className={styles.paginationButton}>
-            <ChevronRightIcon />
-          </button>
         </div>
       </div>
     </div>
   )
 }
+
 
