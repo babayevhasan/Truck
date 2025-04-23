@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import styles from "./Sidebar.module.css"
 import IconSvg from "../../../assets/icons/icon.svg?react"
 import DashboardIcon from "../../../assets/icons/dashboard.svg?react"
@@ -12,6 +12,7 @@ import MessageIcon from "../../../assets/icons/message.svg?react"
 import UsersIcon from "../../../assets/icons/users.svg?react"
 import UserIcon from "../../../assets/icons/user.svg?react"
 import ChevronLeftIcon from "../../../assets/icons/left.svg?react"
+import { useWindowWidth } from '../useWindowWidth'
 
 const MenuIcon = () => (
   <svg
@@ -48,24 +49,16 @@ const CloseIcon = () => (
 
 export default function Sidebar({ onToggle,}) {
   const location = useLocation()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const [isExpanded, setIsExpanded] = useState(false)
-
-
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-      if (window.innerWidth > 768) {
-        setIsMobileMenuOpen(false)
-      }
+  const onResizeWindow = (windowInnerWidth) => {
+    
+    if (windowInnerWidth > 768) {
+      setIsMobileMenuOpen(false)
     }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+  }
+  const { windowWidth} = useWindowWidth(onResizeWindow);
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     if (onToggle) {
@@ -76,8 +69,9 @@ export default function Sidebar({ onToggle,}) {
   const isActive = (path) => {
     return location.pathname === path
   }
-
+// duz deyil
   const getIcon = (iconName) => {
+    
     switch (iconName) {
       case "dashboard":
         return <DashboardIcon />
@@ -101,7 +95,7 @@ export default function Sidebar({ onToggle,}) {
   }
 
   const navItems = [
-    { icon: "dashboard", label: "Dashboard", path: "/" },
+    { /* icon: "dashboard", */ label: "Dashboard", path: "/" , icon: <DashboardIcon /> },
     { icon: "settings", label: "Seçim Konfiqurasiyası", path: "/configuration" },
     { icon: "package", label: "Yük elanları", path: "/freight-announcements" },
     { icon: "truck", label: "Yük maşını elanları", path: "/vehicle-announcements" },
@@ -131,10 +125,11 @@ export default function Sidebar({ onToggle,}) {
           <ul className={styles.navList}>
             {navItems.map((item, index) => (
               <li key={index} className={styles.navItem}>
-                <a href={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
-                  {getIcon(item.icon)}
+                {/* sehvdi */}
+                <Link to={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
+                  {item.icon}
                   <span>{item.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -164,6 +159,7 @@ export default function Sidebar({ onToggle,}) {
           <ul className={styles.mobileNavList}>
             {navItems.map((item, index) => (
               <li key={index} className={styles.mobileNavItem}>
+                {/* sehvdi */}
                 <a
                   href={item.path}
                   className={`${styles.mobileNavLink} ${isActive(item.path) ? styles.mobileActive : ""}`}
