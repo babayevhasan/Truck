@@ -5,13 +5,14 @@ import Sidebar from "./Sidebar/Sidebar"
 import styles from "./MainLayout.module.css"
 import { Outlet } from 'react-router-dom'
 
-export default function MainLayout({ children }) {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+export default function MainLayout() {
+  const [setWindowWidth] = useState(window.innerWidth)
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
-
+  const [windowWidth, setWindowWidthState] = useState(window.innerWidth)
+  
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth)
+      setWindowWidthState(window.innerWidth)
     }
 
     window.addEventListener("resize", handleResize)

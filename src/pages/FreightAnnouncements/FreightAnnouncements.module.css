@@ -139,7 +139,7 @@
   transition: background-color 0.2s;
 }
 
-.customSelectOption:hover {
+.customSelectOption:not(.customSelectOptionSelected):hover {
   background-color: #f3f4f6;
 }
 
@@ -345,9 +345,11 @@
   align-items: center;
   margin-top: 1.5rem;
   justify-content: flex-end;
+  /* gap: 0.5rem; */
 }
 
 .paginations {
+  padding:0px 10px;
   border: solid 1px rgb(234, 234, 234);
   display: flex;
   align-items: center;
@@ -361,6 +363,7 @@
   width: 2rem;
   height: 2rem;
   border: none;
+  border-radius: 9999px;
   background-color: initial;
   cursor: pointer;
 }

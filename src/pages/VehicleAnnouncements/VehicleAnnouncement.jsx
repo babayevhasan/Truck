@@ -118,14 +118,12 @@ export default function VehicleAnnouncement() {
           </button>
         </div>
       </div>
-
       <div className={styles.content}>
         <div className={styles.titleSection}>
           <button className={styles.backButton} onClick={handleBack}>
             <Back />
             <span> Elan haqqında</span>
           </button>
-
           <div className={styles.actionButtons}>
             <button className={styles.blockButton} onClick={() => setIsBlockModalOpen(true)}>
               <BlockIcon />
@@ -209,7 +207,6 @@ export default function VehicleAnnouncement() {
           </div>
         </div>
       </div>
-
       <Modal
         isOpen={isCancelModalOpen}
         onClose={() => setIsCancelModalOpen(false)}

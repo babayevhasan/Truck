@@ -7,7 +7,6 @@ import CalendarIcon from "../../assets/icons/calendar.svg?react"
 import BellIcon from "../../assets/icons/bell.svg?react"
 import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
-
 const ChevronLeftIcon = () => (
   <svg
     className={styles.icon}

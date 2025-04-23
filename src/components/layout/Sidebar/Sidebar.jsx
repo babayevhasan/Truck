@@ -47,7 +47,7 @@ const CloseIcon = () => (
   </svg>
 )
 
-export default function Sidebar({ onToggle,}) {
+export default function Sidebar({ onToggle}) {
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
@@ -70,39 +70,16 @@ export default function Sidebar({ onToggle,}) {
     return location.pathname === path
   }
 // duz deyil
-  const getIcon = (iconName) => {
-    
-    switch (iconName) {
-      case "dashboard":
-        return <DashboardIcon />
-      case "settings":
-        return <SettingsIcon />
-      case "package":
-        return <PackageIcon />
-      case "truck":
-        return <TruckIcon />
-      case "message":
-        return <MessageIcon />
-      case "users":
-        return <UsersIcon />
-      case "user":
-        return <UserIcon />
-      case "chart":
-        return <IconSvg />
-      default:
-        return null
-    }
-  }
 
   const navItems = [
-    { /* icon: "dashboard", */ label: "Dashboard", path: "/" , icon: <DashboardIcon /> },
-    { icon: "settings", label: "Seçim Konfiqurasiyası", path: "/configuration" },
-    { icon: "package", label: "Yük elanları", path: "/freight-announcements" },
-    { icon: "truck", label: "Yük maşını elanları", path: "/vehicle-announcements" },
-    { icon: "message", label: "Mesajlar", path: "/messages" },
-    { icon: "users", label: "Operatorlar", path: "/operators" },
-    { icon: "user", label: "İstifadəçilər", path: "/users" },
-    { icon: "chart", label: "Tranzaksiya", path: "/transactions" },
+    { label: "Dashboard", path: "/", icon: <DashboardIcon /> },
+    { label: "Seçim Konfiqurasiyası", path: "/configuration", icon: <SettingsIcon /> },
+    { label: "Yük elanları", path: "/freight-announcements", icon: <PackageIcon /> },
+    { label: "Yük maşını elanları", path: "/vehicle-announcements", icon: <TruckIcon /> },
+    { label: "Mesajlar", path: "/messages", icon: <MessageIcon /> },
+    { label: "Operatorlar", path: "/operators", icon: <UsersIcon /> },
+    { label: "İstifadəçilər", path: "/users", icon: <UserIcon /> },
+    { label: "Tranzaksiya", path: "/transactions", icon: <IconSvg /> },
   ]
 
   const toggleMobileMenu = () => {
@@ -160,14 +137,14 @@ export default function Sidebar({ onToggle,}) {
             {navItems.map((item, index) => (
               <li key={index} className={styles.mobileNavItem}>
                 {/* sehvdi */}
-                <a
-                  href={item.path}
+                <Link
+                  to={item.path}
                   className={`${styles.mobileNavLink} ${isActive(item.path) ? styles.mobileActive : ""}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {getIcon(item.icon)}
+                  {item.icon}
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

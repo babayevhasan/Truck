@@ -9,74 +9,47 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<MainLayout/>}>
+
+        <Route path='/' element={<MainLayout />}>
           <Route
             path=""
-            element={
-                <div>Dashboard</div>
-            }
+            element={<div>Dashboard</div>}
           />
 
           <Route
             path="freight-announcements"
-            element={
-                <FreightAnnouncements />
-            }
+            element={<FreightAnnouncements />}
           />
           <Route
             path="vehicle-announcements"
             element={<VehicleAnnouncements />}
           />
+
+          <Route
+            path="vehicle-announcements/:id"
+            element={<VehicleAnnouncement />} />
+
+          <Route
+           path="messages"
+            element={<div>Messages</div>} />
+
+          <Route
+           path="operators"
+            element={<div>Operators</div>} />
+
+          <Route
+           path="users"
+            element={<div>Users</div>} />
+
+          <Route
+           path="transactions"
+            element={<div>Transactions</div>} />
+
+          <Route
+           path="configuration"
+            element={<div>Configuration</div>} />
         </Route>
-        
-        <Route
-          path="/vehicle-announcements/:id"
-          element={
-            <MainLayout>
-              <VehicleAnnouncement />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/messages"
-          element={
-            <MainLayout>
-              <div>Messages</div>
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/operators"
-          element={
-            <MainLayout>
-              <div>Operators</div>
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/users"
-          element={
-            <MainLayout>
-              <div>Users</div>
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/transactions"
-          element={
-            <MainLayout>
-              <div>Transactions</div>
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/configuration"
-          element={
-            <MainLayout>
-              <div>Configuration</div>
-            </MainLayout>
-          }
-        />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
