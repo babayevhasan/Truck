@@ -5,33 +5,30 @@ import VehicleAnnouncements from "./pages/VehicleAnnouncements/VehicleAnnounceme
 import VehicleAnnouncement from "./pages/VehicleAnnouncements/VehicleAnnouncement"
 
 export default function App() {
+  // Layout duz deyil
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <MainLayout>
-              <div>Dashboard</div>
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/freight-announcements"
-          element={
-            <MainLayout>
-              <FreightAnnouncements />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/vehicle-announcements"
-          element={
-            <MainLayout>
-              <VehicleAnnouncements />
-            </MainLayout>
-          }
-        />
+        <Route path='/' element={<MainLayout/>}>
+          <Route
+            path=""
+            element={
+                <div>Dashboard</div>
+            }
+          />
+
+          <Route
+            path="freight-announcements"
+            element={
+                <FreightAnnouncements />
+            }
+          />
+          <Route
+            path="vehicle-announcements"
+            element={<VehicleAnnouncements />}
+          />
+        </Route>
+        
         <Route
           path="/vehicle-announcements/:id"
           element={

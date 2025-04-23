@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Sidebar from "./Sidebar/Sidebar"
 import styles from "./MainLayout.module.css"
+import { Outlet } from 'react-router-dom'
 
 export default function MainLayout({ children }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -24,7 +25,7 @@ export default function MainLayout({ children }) {
   return (
     <div className={`${styles.container} ${isSidebarExpanded ? styles.sidebarExpanded : ""}`}>
       <Sidebar onToggle={handleSidebarToggle} />
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}><Outlet/>{/* {children} */}</main>
     </div>
   )
 }
