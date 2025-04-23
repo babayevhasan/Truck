@@ -201,18 +201,30 @@ const getStatusClass = (status) => {
   }
 }
 
+
+const handleNextPage = () => {
+  if (currentPage < totalPages) {
+    setCurrentPage(currentPage + 1)
+  }
+}
+
+const handlePrevPage = () => {
+  if (currentPage > 1) {
+    setCurrentPage(currentPage - 1)
+  }
+}
     
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.backornext}>
-          <button>
-            <LeftNav />
-          </button>
-          <button>
-            <RightNav />
-          </button>
-        </div>
+      <div className={styles.backornext}>
+              <button onClick={handlePrevPage}>
+                <LeftNav />
+              </button>
+              <button onClick={handleNextPage}>
+                <RightNav />
+              </button>
+            </div>
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
             <Bell />

@@ -218,18 +218,14 @@ export default function VehicleAnnouncements() {
   const filteredData =
     selectedStatus === "Status seç" ? vehicleData : vehicleData.filter((item) => item.status === selectedStatus)
 
-  // Sayfa başına kaç öğe gösterileceği
   const itemsPerPage = 5
 
-  // Sayfa verilerini hesaplamak
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
 
-  // Sayfa sayısını hesaplamak
   const totalPages = Math.ceil(filteredData.length / itemsPerPage)
 
-  // Sayfa değiştirici fonksiyonlar
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
