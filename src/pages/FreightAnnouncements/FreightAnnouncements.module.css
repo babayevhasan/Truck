@@ -1,6 +1,9 @@
- .container {
+.container {
   background-color: white;
   border-radius: 0.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -177,6 +180,7 @@
   font-weight: 500;
   text-transform: uppercase;
   color: #6b7280;
+  min-width: 150px;
 }
 
 .table td {
@@ -345,7 +349,6 @@
   align-items: center;
   margin-top: 1.5rem;
   justify-content: flex-end;
-  /* gap: 0.5rem; */
 }
 
 .paginations {

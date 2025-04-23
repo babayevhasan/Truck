@@ -14,30 +14,6 @@ export default function FreightAnnouncements() {
   const [selectedStatus, setSelectedStatus] = useState("Status seç")
   const selectRef = useRef(null)
 
-  const statusOptions = ["Status seç", "Aktiv", "Ləğv", "Blok", "Gözləmədə"]
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (selectRef.current && !selectRef.current.contains(event.target)) {
-        setIsSelectOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [])
-
-  const toggleSelect = () => {
-    setIsSelectOpen(!isSelectOpen)
-  }
-
-  const handleSelectOption = (option) => {
-    setSelectedStatus(option)
-    setIsSelectOpen(false)
-  }
-
   const freightData = [
     {
       id: 1,
@@ -71,17 +47,6 @@ export default function FreightAnnouncements() {
       toDate: "12.12.2022",
       type: "Soyuduculu",
       status: "Ləğv",
-    },
-    {
-      id: 9,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuducu",
-      status: "Gözləmədə",
     },
     {
       id: 4,
@@ -138,26 +103,105 @@ export default function FreightAnnouncements() {
       type: "Çıxdır",
       status: "Blok",
     },
+    {
+      id: 9,
+      fromLocation: "Ankara",
+      fromCountry: "Türkiye",
+      fromDate: "12.12.2022",
+      toLocation: "Bakı",
+      toCountry: "Azərbaycan",
+      toDate: "12.12.2022",
+      type: "Soyuducu",
+      status: "Gözləmədə",
+    },
+    {
+      id: 10,
+      fromLocation: "Ankara",
+      fromCountry: "Türkiye",
+      fromDate: "12.12.2022",
+      toLocation: "Bakı",
+      toCountry: "Azərbaycan",
+      toDate: "12.12.2022",
+      type: "Çadırlı",
+      status: "Ləğv",
+    },
+    {
+      id:11,
+      fromLocation: "Moskva",
+      fromCountry: "Rusiya",
+      fromDate: "12.12.2022",
+      toLocation: "Bakı",
+      toCountry: "Azərbaycan",
+      toDate: "12.12.2022",
+      type: "Çadırlı",
+      status: "Blok",
+    },
+    {
+      id: 12,
+      fromLocation: "Ankara",
+      fromCountry: "Türkiye",
+      fromDate: "12.12.2022",
+      toLocation: "Bakı",
+      toCountry: "Azərbaycan",
+      toDate: "12.12.2022",
+      type: "Soyuduculu",
+      status: "Ləğv",
+    },
   ]
+  
 
-  const getStatusClass = (status) => {
-    switch (status) {
-      case "Ləğv":
-        return styles.statusCancel
-      case "Blok":
-        return styles.statusBlock
-      case "Aktiv":
-        return styles.statusActive
-      case "Gözləmədə":
-        return styles.statusPending
-      default:
-        return ""
+const filteredData =
+  selectedStatus === "Status seç"
+    ? freightData
+    : freightData.filter((item) => item.status === selectedStatus)
+
+const itemsPerPage = 5
+const totalPages = Math.ceil(filteredData.length / itemsPerPage)
+const startIndex = (currentPage - 1) * itemsPerPage
+const endIndex = startIndex + itemsPerPage
+const currentItems = filteredData.slice(startIndex, endIndex)
+
+const statusOptions = ["Status seç", "Aktiv", "Ləğv", "Blok", "Gözləmədə"]
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (selectRef.current && !selectRef.current.contains(event.target)) {
+      setIsSelectOpen(false)
     }
   }
 
-  const filteredData =
-    selectedStatus === "Status seç" ? freightData : freightData.filter((item) => item.status === selectedStatus)
+  document.addEventListener("mousedown", handleClickOutside)
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside)
+  }
+}, [])
 
+const toggleSelect = () => {
+  setIsSelectOpen(!isSelectOpen)
+}
+
+const handleSelectOption = (option) => {
+  setSelectedStatus(option)
+  setCurrentPage(1) 
+  setIsSelectOpen(false)
+}
+
+const getStatusClass = (status) => {
+  switch (status) {
+    case "Ləğv":
+      return styles.statusCancel
+    case "Blok":
+      return styles.statusBlock
+    case "Aktiv":
+      return styles.statusActive
+    case "Gözləmədə":
+      return styles.statusPending
+    default:
+      return ""
+  }
+}
+
+    
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -220,67 +264,66 @@ export default function FreightAnnouncements() {
         </div>
 
         {activeTab === "table" && (
-          <div className={styles.tableContainer}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>№</th>
-                  <th>Haradan</th>
-                  <th>Haradan tarix</th>
-                  <th>Haraya</th>
-                  <th>Haraya tarix</th>
-                  <th>Növü</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item) => (
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>
-                      {item.fromLocation}, {item.fromCountry}
-                    </td>
-                    <td>
-                      <div className={styles.dateCell}>
-                        <span className={`${styles.icon} ${styles.calendar}`}></span>
-                        {item.fromDate}
-                      </div>
-                    </td>
-                    <td>
-                      {item.toLocation}, {item.toCountry}
-                    </td>
-                    <td>
-                      <div className={styles.dateCell}>
-                        <span className={`${styles.icon} ${styles.calendar}`}></span>
-                        {item.toDate}
-                      </div>
-                    </td>
-                    <td>{item.type}</td>
-                    <td>
-                      <span className={`${styles.status} ${getStatusClass(item.status)}`}>• {item.status}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+  <div className={styles.tableContainer}>
+    <table className={styles.table}>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Haradan</th>
+          <th> tarix</th>
+          <th>Haraya</th>
+          <th>tarix</th>
+          <th>Növü</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {currentItems.map((item) => (
+          <tr key={item.id}>
+            <td>{item.id}</td>
+            <td>
+              {item.fromLocation}, {item.fromCountry}
+            </td>
+            <td>
+              <div className={styles.dateCell}>
+                <span className={`${styles.icon} ${styles.calendar}`}></span>
+                {item.fromDate}
+              </div>
+            </td>
+            <td>
+              {item.toLocation}, {item.toCountry}
+            </td>
+            <td>
+              <div className={styles.dateCell}>
+                <span className={`${styles.icon} ${styles.calendar}`}></span>
+                {item.toDate}
+              </div>
+            </td>
+            <td>{item.type}</td>
+            <td>
+              <span className={`${styles.status} ${getStatusClass(item.status)}`}>• {item.status}</span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
 
         {activeTab === "cards" && (
           <div className={styles.cardsContainer}>
-            {filteredData.map((item) => (
-              <div key={item.id} className={styles.card}>
+            {currentItems.map((item, index) => (
+              <div key={index} className={styles.card}>
                 <div className={styles.cardHeader}>
                   <div
-                    className={`${styles.statusBadge} ${
-                      item.status === "Aktiv"
-                        ? styles.statusBadgeActive
-                        : item.status === "Ləğv"
-                          ? styles.statusBadgeCancel
-                          : item.status === "Blok"
-                            ? styles.statusBadgeBlock
-                            : styles.statusBadgePending
-                    }`}
+                    className={`${styles.statusBadge} ${item.status === "Aktiv"
+                      ? styles.statusBadgeActive
+                      : item.status === "Ləğv"
+                        ? styles.statusBadgeCancel
+                        : item.status === "Blok"
+                          ? styles.statusBadgeBlock
+                          : styles.statusBadgePending
+                      }`}
                   >
                     {item.status}
                   </div>
@@ -329,22 +372,31 @@ export default function FreightAnnouncements() {
         )}
         <div className={styles.pagination}>
           <div className={styles.paginations}>
-            <button className={styles.paginationButton}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
               <span className={`${styles.icon} ${styles.chevronLeft}`}></span>
             </button>
 
             <div className={styles.pageNumbers}>
-              <button className={`${styles.pageNumber} ${styles.activePage}`}>1</button>
-              {[2, 3, 4, 5].map((page) => (
-                <button key={page} className={styles.pageNumber}>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                >
                   {page}
                 </button>
               ))}
-              <span className={styles.ellipsis}>...</span>
-              <button className={styles.pageNumber}>21</button>
             </div>
 
-            <button className={styles.paginationButton}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
               <span className={`${styles.icon} ${styles.chevronRight}`}></span>
             </button>
           </div>

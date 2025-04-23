@@ -51,6 +51,7 @@ const ChevronDownIcon = () => (
     <polyline points="6 9 12 15 18 9" />
   </svg>
 )
+
 export default function VehicleAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
   const [currentPage, setCurrentPage] = useState(1)
@@ -195,7 +196,6 @@ export default function VehicleAnnouncements() {
       status: "Aktiv",
     },
   ]
-
   const getStatusClass = (status) => {
     switch (status) {
       case "Ləğv":
@@ -218,14 +218,42 @@ export default function VehicleAnnouncements() {
   const filteredData =
     selectedStatus === "Status seç" ? vehicleData : vehicleData.filter((item) => item.status === selectedStatus)
 
+  // Sayfa başına kaç öğe gösterileceği
+  const itemsPerPage = 5
+
+  // Sayfa verilerini hesaplamak
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
+
+  // Sayfa sayısını hesaplamak
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage)
+
+  // Sayfa değiştirici fonksiyonlar
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.backornext}>
-          <button>
+          <button onClick={handlePrevPage}>
             <LeftNav />
           </button>
-          <button>
+          <button onClick={handleNextPage}>
             <RightNav />
           </button>
         </div>
@@ -288,7 +316,7 @@ export default function VehicleAnnouncements() {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((item) => (
+                {currentItems.map((item) => (
                   <tr key={item.id} onClick={() => handleRowClick(item.id)} className={styles.tableRow}>
                     <td>{item.id}</td>
                     <td>
@@ -319,24 +347,26 @@ export default function VehicleAnnouncements() {
             </table>
           </div>
         )}
+
         <div className={styles.pagination}>
           <div className={styles.paginations}>
-            <button className={styles.paginationButton}>
+            <button className={styles.paginationButton} onClick={handlePrevPage}>
               <ChevronLeftIcon />
             </button>
 
             <div className={styles.pageNumbers}>
-              <button className={`${styles.pageNumber} ${styles.activePage}`}>1</button>
-              {[2, 3, 4, 5].map((page) => (
-                <button key={page} className={styles.pageNumber}>
-                  {page}
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  className={`${styles.pageNumber} ${currentPage === index + 1 ? styles.activePage : ""}`}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
                 </button>
               ))}
-              <span className={styles.ellipsis}>...</span>
-              <button className={styles.pageNumber}>21</button>
             </div>
 
-            <button className={styles.paginationButton}>
+            <button className={styles.paginationButton} onClick={handleNextPage}>
               <ChevronRightIcon />
             </button>
           </div>
@@ -345,5 +375,4 @@ export default function VehicleAnnouncements() {
     </div>
   )
 }
-
 

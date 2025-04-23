@@ -166,6 +166,7 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+
 }
 
 .table th {
@@ -175,6 +176,7 @@
   font-weight: 500;
   text-transform: uppercase;
   color: #6b7280;
+  min-width: 150px;
 }
 
 .table td {
