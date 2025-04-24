@@ -7,6 +7,8 @@ import CalendarIcon from "../../assets/icons/calendar.svg?react"
 import BellIcon from "../../assets/icons/bell.svg?react"
 import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
+import freightData from '../FreightAnnouncements/freightData.json'
+
 const ChevronLeftIcon = () => (
   <svg
     className={styles.icon}
@@ -83,119 +85,6 @@ export default function VehicleAnnouncements() {
     setSelectedStatus(option)
     setIsSelectOpen(false)
   }
-
-  const vehicleData = [
-    {
-      id: 1,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Tankerli",
-      status: "Ləğv",
-    },
-    {
-      id: 2,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Yük maşını",
-      status: "Blok",
-    },
-    {
-      id: 3,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuducu",
-      status: "Ləğv",
-    },
-    {
-      id: 4,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Tankerli",
-      status: "Aktiv",
-    },
-    {
-      id: 5,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Yük maşını",
-      status: "Ləğv",
-    },
-    {
-      id: 6,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Tankerli",
-      status: "Blok",
-    },
-    {
-      id: 7,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuducu",
-      status: "Gözləmədə",
-    },
-    {
-      id: 8,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Tankerli",
-      status: "Blok",
-    },
-    {
-      id: 9,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuducu",
-      status: "Gözləmədə",
-    },
-    {
-      id: 10,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Tankerli",
-      status: "Aktiv",
-    },
-  ]
   const getStatusClass = (status) => {
     switch (status) {
       case "Ləğv":
@@ -216,7 +105,7 @@ export default function VehicleAnnouncements() {
   }
 
   const filteredData =
-    selectedStatus === "Status seç" ? vehicleData : vehicleData.filter((item) => item.status === selectedStatus)
+    selectedStatus === "Status seç" ? freightData : freightData.filter((item) => item.status === selectedStatus)
 
   const itemsPerPage = 5
 

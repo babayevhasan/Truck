@@ -6,6 +6,7 @@ import TruckIcon from "../../assets/icons/truckorange.svg?react"
 import Bell from "../../assets/icons/bell.svg?react"
 import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
+import freightData from '../FreightAnnouncements/freightData.json'
 
 export default function FreightAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
@@ -13,144 +14,9 @@ export default function FreightAnnouncements() {
   const [isSelectOpen, setIsSelectOpen] = useState(false)
   const [selectedStatus, setSelectedStatus] = useState("Status seç")
   const selectRef = useRef(null)
-
-  const freightData = [
-    {
-      id: 1,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çadırlı",
-      status: "Ləğv",
-    },
-    {
-      id: 2,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çadırlı",
-      status: "Blok",
-    },
-    {
-      id: 3,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuduculu",
-      status: "Ləğv",
-    },
-    {
-      id: 4,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çadırlı",
-      status: "Aktiv",
-    },
-    {
-      id: 5,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çadırlı",
-      status: "Ləğv",
-    },
-    {
-      id: 6,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çıxdır",
-      status: "Blok",
-    },
-    {
-      id: 7,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuducu",
-      status: "Gözləmədə",
-    },
-    {
-      id: 8,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çıxdır",
-      status: "Blok",
-    },
-    {
-      id: 9,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuducu",
-      status: "Gözləmədə",
-    },
-    {
-      id: 10,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çadırlı",
-      status: "Ləğv",
-    },
-    {
-      id:11,
-      fromLocation: "Moskva",
-      fromCountry: "Rusiya",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Çadırlı",
-      status: "Blok",
-    },
-    {
-      id: 12,
-      fromLocation: "Ankara",
-      fromCountry: "Türkiye",
-      fromDate: "12.12.2022",
-      toLocation: "Bakı",
-      toCountry: "Azərbaycan",
-      toDate: "12.12.2022",
-      type: "Soyuduculu",
-      status: "Ləğv",
-    },
-  ]
   
 
-const filteredData =
+  const filteredData =
   selectedStatus === "Status seç"
     ? freightData
     : freightData.filter((item) => item.status === selectedStatus)
@@ -417,5 +283,3 @@ const handlePrevPage = () => {
     </div>
   )
 }
-
-
