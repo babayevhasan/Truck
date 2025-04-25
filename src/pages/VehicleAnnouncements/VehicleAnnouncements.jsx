@@ -130,15 +130,43 @@ export default function VehicleAnnouncements() {
       setCurrentPage(currentPage - 1)
     }
   }
+  const navItems = [
+    { label: "Dashboard", path: "/" },
+    { label: "Seçim Konfiqurasiyası", path: "/configuration" },
+    { label: "Yük elanları", path: "/freight-announcements" },
+    { label: "Yük maşını elanları", path: "/vehicle-announcements" },
+    { label: "Mesajlar", path: "/messages" },
+    { label: "Operatorlar", path: "/operators" },
+    { label: "İstifadəçilər", path: "/users" },
+    { label: "Tranzaksiya", path: "/transactions" },
+  ];
+
+  const handleNavigation = (direction) => {
+    const currentIndex = navItems.findIndex(item => 
+      location.pathname === item.path || location.pathname.startsWith(item.path + "/")
+    );
+  
+    let targetIndex = currentIndex;
+  
+    if (direction === "next" && targetIndex < navItems.length - 1) {
+      targetIndex += 1;
+    } else if (direction === "prev" && targetIndex > 0) {
+      targetIndex -= 1;
+    }
+  
+    if (targetIndex >= 0 && targetIndex < navItems.length) {
+      navigate(navItems[targetIndex].path);
+    }
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.backornext}>
-          <button onClick={handlePrevPage}>
+          <button onClick={() => handleNavigation("prev")}>
             <LeftNav />
           </button>
-          <button onClick={handleNextPage}>
+          <button onClick={() => handleNavigation("next")}>
             <RightNav />
           </button>
         </div>
@@ -260,4 +288,5 @@ export default function VehicleAnnouncements() {
     </div>
   )
 }
+
 

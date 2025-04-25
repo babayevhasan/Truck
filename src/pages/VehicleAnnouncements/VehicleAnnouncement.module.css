@@ -35,7 +35,6 @@
 .navButton:hover {
   background-color: #e5e7eb;
 }
-
 .notificationButton {
   display: flex;
   align-items: center;
@@ -47,11 +46,9 @@
   border: none;
   cursor: pointer;
 }
-
 .notificationButton:hover {
-  background-color: #f3f4f6;
+  background-color:#f3f4f6; 
 }
-
 .content {
   padding: 1.5rem;
 }

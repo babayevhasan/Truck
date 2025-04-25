@@ -69,7 +69,6 @@ export default function Sidebar({ onToggle}) {
   const isActive = (path) => {
     return location.pathname === path
   }
-// duz deyil
 
   const navItems = [
     { label: "Dashboard", path: "/", icon: <DashboardIcon /> },
@@ -129,14 +128,13 @@ export default function Sidebar({ onToggle}) {
       <div className={`${styles.mobileSidebar} ${isMobileMenuOpen ? styles.mobileSidebarOpen : ""}`}>
         <div className={styles.mobileMenuHeader}>
           <button className={styles.mobileCloseButton} onClick={toggleMobileMenu}>
-            <CloseIcon />
+            <CloseIcon /> 
           </button>
         </div>
         <nav className={styles.mobileNav}>
           <ul className={styles.mobileNavList}>
             {navItems.map((item, index) => (
               <li key={index} className={styles.mobileNavItem}>
-                {/* sehvdi */}
                 <Link
                   to={item.path}
                   className={`${styles.mobileNavLink} ${isActive(item.path) ? styles.mobileActive : ""}`}
@@ -153,6 +151,10 @@ export default function Sidebar({ onToggle}) {
     </>
   )
 }
+
+
+
+
 
 
 
