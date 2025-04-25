@@ -101,7 +101,6 @@ export default function Sidebar({ onToggle}) {
           <ul className={styles.navList}>
             {navItems.map((item, index) => (
               <li key={index} className={styles.navItem}>
-                {/* sehvdi */}
                 <Link to={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
                   {item.icon}
                   <span>{item.label}</span>
@@ -151,10 +150,6 @@ export default function Sidebar({ onToggle}) {
     </>
   )
 }
-
-
-
-
 
 
 

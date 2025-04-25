@@ -115,21 +115,21 @@ export default function VehicleAnnouncements() {
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage)
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page)
-  }
+  // const handlePageChange = (page) => {
+  //   setCurrentPage(page)
+  // }
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
+  // const handleNextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1)
+  //   }
+  // }
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1)
-    }
-  }
+  // const handlePrevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1)
+  //   }
+  // }
   const navItems = [
     { label: "Dashboard", path: "/" },
     { label: "Seçim Konfiqurasiyası", path: "/configuration" },
@@ -141,7 +141,7 @@ export default function VehicleAnnouncements() {
     { label: "Tranzaksiya", path: "/transactions" },
   ];
 
-  const handleNavigation = (direction) => {
+  const handleNavigation = (direction) => { 
     const currentIndex = navItems.findIndex(item =>
       location.pathname === item.path || location.pathname.startsWith(item.path + "/")
     );
@@ -221,9 +221,9 @@ export default function VehicleAnnouncements() {
                 <tr>
                   <th>№</th>
                   <th>Haradan</th>
-                  <th>Haradan tarix</th>
+                  <th> tarix</th>
                   <th>Haraya</th>
-                  <th>Haraya tarix</th>
+                  <th> tarix</th>
                   <th>Növü</th>
                   <th>Status</th>
                 </tr>
@@ -262,43 +262,36 @@ export default function VehicleAnnouncements() {
         )}
 
         <div className={styles.pagination}>
-
-
-
-          <div className={styles.paginations}>
-            <button
-              className={styles.paginationButton}
-              onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              <ChevronLeftIcon />
-            </button>
-
-            {Array.from({ length: 4 }, (_, i) => {
-              const page = currentPage - 2 + i;
-              return page >= 1 && page <= totalPages ? (
-                <button
-                  key={page}
-                  className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
-                  onClick={() => setCurrentPage(page)}
-                >
-                  {page}
-                </button>
-              ) : null;
-            })}
-
-            <button
-              className={styles.paginationButton}
-              onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              <ChevronRightIcon />
-            </button>
-          </div>
-
-
-
-
+        <div className={styles.paginations}>
+                    <button
+                      className={styles.paginationButton}
+                      onClick={() => setCurrentPage(currentPage - 1)}
+                      disabled={currentPage === 1}
+                    >
+                      <span className={`${styles.icon} ${styles.chevronLeft}`}><ChevronLeftIcon/> </span>
+                    </button>
+        
+                    {Array.from({ length: 5 }, (_, i) => {
+                      const page = currentPage + i - 2;
+                      return page >= 1 && page <= totalPages ? (
+                        <button
+                          key={page}
+                          className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
+                          onClick={() => setCurrentPage(page)}
+                        >
+                          {page}
+                        </button>
+                      ) : null;
+                    })}
+        
+                    <button
+                      className={styles.paginationButton}
+                      onClick={() => setCurrentPage(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                    >
+                      <span className={`${styles.icon} ${styles.chevronRight}`}><ChevronRightIcon/> </span>
+                    </button>
+                  </div>
         </div>
       </div>
     </div>

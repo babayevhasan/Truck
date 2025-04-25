@@ -7,7 +7,7 @@
   
   .main {
     flex: 1;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     overflow-x: hidden;
     margin-left: 4.5rem; 
     transition: margin-left 0.3s ease;

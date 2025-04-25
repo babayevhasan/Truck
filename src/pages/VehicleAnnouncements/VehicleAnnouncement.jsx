@@ -104,14 +104,14 @@ export default function VehicleAnnouncement() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.navigationButtons}>
-          <button className={styles.navButton}>
-            <ChevronLeftIcon />
-          </button>
-          <button className={styles.navButton}>
-            <ChevronRightIcon />
-          </button>
-        </div>
+          <div className={styles.navigationButtons}>
+            {/* <button className={styles.navButton}>
+              <ChevronLeftIcon />
+            </button>
+            <button className={styles.navButton}>
+              <ChevronRightIcon />
+            </button> */}
+          </div>
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
             <BellIcon />
