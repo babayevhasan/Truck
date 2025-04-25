@@ -7,7 +7,7 @@
     "toLocation": "Bakı",
     "toCountry": "Azərbaycan",
     "toDate": "12.12.2022",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Ləğv"
   },
   {
@@ -29,7 +29,7 @@
     "toLocation": "Bakı",
     "toCountry": "Azərbaycan",
     "toDate": "11.02.2023",
-    "type": "Çıxdır",
+    "type": "çıxdı",
     "status": "Gözləmədə"
   },
   {
@@ -40,7 +40,7 @@
     "toLocation": "Sumqayıt",
     "toCountry": "Azərbaycan",
     "toDate": "06.03.2023",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Blok"
   },
   {
@@ -62,7 +62,7 @@
     "toLocation": "Gəncə",
     "toCountry": "Azərbaycan",
     "toDate": "02.05.2023",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Ləğv"
   },
   {
@@ -84,7 +84,7 @@
     "toLocation": "Bakı",
     "toCountry": "Azərbaycan",
     "toDate": "16.07.2023",
-    "type": "Çıxdır",
+    "type": "çıxdı",
     "status": "Blok"
   },
   {
@@ -95,7 +95,7 @@
     "toLocation": "Gəncə",
     "toCountry": "Azərbaycan",
     "toDate": "02.08.2023",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Aktiv"
   },
   {
@@ -117,7 +117,7 @@
     "toLocation": "Bakı",
     "toCountry": "Azərbaycan",
     "toDate": "06.09.2023",
-    "type": "Çıxdır",
+    "type": "çıxdı",
     "status": "Blok"
   },
   {
@@ -139,7 +139,7 @@
     "toLocation": "Sumqayıt",
     "toCountry": "Azərbaycan",
     "toDate": "26.09.2023",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Blok"
   },
   {
@@ -161,7 +161,7 @@
     "toLocation": "Gəncə",
     "toCountry": "Azərbaycan",
     "toDate": "11.10.2023",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Aktiv"
   },
   {
@@ -172,7 +172,7 @@
     "toLocation": "Sumqayıt",
     "toCountry": "Azərbaycan",
     "toDate": "16.10.2023",
-    "type": "Çıxdır",
+    "type": "çıxdı",
     "status": "Blok"
   },
   {
@@ -194,7 +194,7 @@
     "toLocation": "Gəncə",
     "toCountry": "Azərbaycan",
     "toDate": "11.11.2023",
-    "type": "Çadırlı",
+    "type": "çatdırıldı",
     "status": "Gözləmədə"
   },
   {
@@ -205,7 +205,7 @@
     "toLocation": "Sumqayıt",
     "toCountry": "Azərbaycan",
     "toDate": "21.11.2023",
-    "type": "Çıxdır",
+    "type": "çıxdı",
     "status": "Aktiv"
   },
   {
@@ -218,5 +218,335 @@
     "toDate": "02.12.2023",
     "type": "Soyuduculu",
     "status": "Ləğv"
+  },
+  {
+    "id": 21,
+    "fromLocation": "Ankara",
+    "fromCountry": "Türkiye",
+    "fromDate": "12.12.2022",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "12.12.2022",
+    "type": "çatdırıldı",
+    "status": "Ləğv"
+  },
+  {
+    "id": 22,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "15.01.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "16.01.2023",
+    "type": "Soyuducu",
+    "status": "Aktiv"
+  },
+  {
+    "id": 23,
+    "fromLocation": "İstanbul",
+    "fromCountry": "Türkiye",
+    "fromDate": "10.02.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "11.02.2023",
+    "type": "çıxdı",
+    "status": "Gözləmədə"
+  },
+  {
+    "id": 24,
+    "fromLocation": "Kazan",
+    "fromCountry": "Rusiya",
+    "fromDate": "05.03.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "06.03.2023",
+    "type": "çatdırıldı",
+    "status": "Blok"
+  },
+  {
+    "id": 25,
+    "fromLocation": "Antalya",
+    "fromCountry": "Türkiye",
+    "fromDate": "22.04.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "23.04.2023",
+    "type": "Soyuduculu",
+    "status": "Aktiv"
+  },
+  {
+    "id": 26,
+    "fromLocation": "Ankara",
+    "fromCountry": "Türkiye",
+    "fromDate": "12.12.2022",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "12.12.2022",
+    "type": "çatdırıldı",
+    "status": "Ləğv"
+  },
+  {
+    "id": 27,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "15.01.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "16.01.2023",
+    "type": "Soyuducu",
+    "status": "Aktiv"
+  },
+  {
+    "id": 28,
+    "fromLocation": "İstanbul",
+    "fromCountry": "Türkiye",
+    "fromDate": "10.02.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "11.02.2023",
+    "type": "çıxdı",
+    "status": "Gözləmədə"
+  },
+  {
+    "id": 29,
+    "fromLocation": "Kazan",
+    "fromCountry": "Rusiya",
+    "fromDate": "05.03.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "06.03.2023",
+    "type": "çatdırıldı",
+    "status": "Blok"
+  },
+  {
+    "id": 30,
+    "fromLocation": "Antalya",
+    "fromCountry": "Türkiye",
+    "fromDate": "22.04.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "23.04.2023",
+    "type": "Soyuduculu",
+    "status": "Aktiv"
+  },
+  {
+    "id": 31,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "01.05.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "02.05.2023",
+    "type": "çatdırıldı",
+    "status": "Ləğv"
+  },
+  {
+    "id": 32,
+    "fromLocation": "İzmir",
+    "fromCountry": "Türkiye",
+    "fromDate": "10.06.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "11.06.2023",
+    "type": "Soyuducu",
+    "status": "Gözləmədə"
+  },
+  {
+    "id":33,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "15.07.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "16.07.2023",
+    "type": "çıxdı",
+    "status": "Blok"
+  },
+  {
+    "id": 34,
+    "fromLocation": "Konya",
+    "fromCountry": "Türkiye",
+    "fromDate": "01.08.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "02.08.2023",
+    "type": "çatdırıldı",
+    "status": "Aktiv"
+  },
+  {
+    "id": 35,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "20.08.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "21.08.2023",
+    "type": "Soyuduculu",
+    "status": "Ləğv"
+  },
+  {
+    "id": 36,
+    "fromLocation": "Trabzon",
+    "fromCountry": "Türkiye",
+    "fromDate": "05.09.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "06.09.2023",
+    "type": "çıxdı",
+    "status": "Blok"
+  },
+  {
+    "id": 37,
+    "fromLocation": "Kazan",
+    "fromCountry": "Rusiya",
+    "fromDate": "18.09.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "19.09.2023",
+    "type": "Soyuducu",
+    "status": "Aktiv"
+  },
+  {
+    "id": 38,
+    "fromLocation": "Ankara",
+    "fromCountry": "Türkiye",
+    "fromDate": "25.09.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "26.09.2023",
+    "type": "çatdırıldı",
+    "status": "Blok"
+  },
+  {
+    "id": 39,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "02.10.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "03.10.2023",
+    "type": "Soyuduculu",
+    "status": "Gözləmədə"
+  },
+  {
+    "id": 40,
+    "fromLocation": "İstanbul",
+    "fromCountry": "Türkiye",
+    "fromDate": "10.10.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "11.10.2023",
+    "type": "çatdırıldı",
+    "status": "Aktiv"
+  },
+  {
+    "id": 41,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "15.10.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "16.10.2023",
+    "type": "çıxdı",
+    "status": "Blok"
+  },
+  {
+    "id": 42,
+    "fromLocation": "İzmir",
+    "fromCountry": "Türkiye",
+    "fromDate": "01.11.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "02.11.2023",
+    "type": "Soyuducu",
+    "status": "Ləğv"
+  },
+  {
+    "id": 43,
+    "fromLocation": "Kazan",
+    "fromCountry": "Rusiya",
+    "fromDate": "10.11.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "11.11.2023",
+    "type": "çatdırıldı",
+    "status": "Gözləmədə"
+  },
+  {
+    "id": 44,
+    "fromLocation": "Antalya",
+    "fromCountry": "Türkiye",
+    "fromDate": "20.11.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "21.11.2023",
+    "type": "çıxdı",
+    "status": "Aktiv"
+  },
+  {
+    "id": 45,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "01.12.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "02.12.2023",
+    "type": "Soyuduculu",
+    "status": "Ləğv"
+  },
+  {
+    "id": 46,
+    "fromLocation": "Ankara",
+    "fromCountry": "Türkiye",
+    "fromDate": "12.12.2022",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "12.12.2022",
+    "type": "çatdırıldı",
+    "status": "Ləğv"
+  },
+  {
+    "id": 47,
+    "fromLocation": "Moskva",
+    "fromCountry": "Rusiya",
+    "fromDate": "15.01.2023",
+    "toLocation": "Gəncə",
+    "toCountry": "Azərbaycan",
+    "toDate": "16.01.2023",
+    "type": "Soyuducu",
+    "status": "Aktiv"
+  },
+  {
+    "id": 48,
+    "fromLocation": "İstanbul",
+    "fromCountry": "Türkiye",
+    "fromDate": "10.02.2023",
+    "toLocation": "Bakı",
+    "toCountry": "Azərbaycan",
+    "toDate": "11.02.2023",
+    "type": "çıxdı",
+    "status": "Gözləmədə"
+  },
+  {
+    "id": 49,
+    "fromLocation": "Kazan",
+    "fromCountry": "Rusiya",
+    "fromDate": "05.03.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "06.03.2023",
+    "type": "çatdırıldı",
+    "status": "Blok"
+  },
+  {
+    "id": 50,
+    "fromLocation": "Kazan",
+    "fromCountry": "Rusiya",
+    "fromDate": "05.03.2023",
+    "toLocation": "Sumqayıt",
+    "toCountry": "Azərbaycan",
+    "toDate": "06.03.2023",
+    "type": "çatdırıldı",
+    "status": "Blok"
   }
 ]

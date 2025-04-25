@@ -82,18 +82,18 @@ export default function FreightAnnouncements() {
   const navigate = useNavigate()
 
   const handleNavigation = (direction) => {
-    const currentIndex = navItems.findIndex(item => 
+    const currentIndex = navItems.findIndex(item =>
       location.pathname === item.path || location.pathname.startsWith(item.path + "/")
     )
-  
+
     let targetIndex = currentIndex
-  
+
     if (direction === "next" && targetIndex < navItems.length - 1) {
       targetIndex += 1
     } else if (direction === "prev" && targetIndex > 0) {
       targetIndex -= 1
     }
-  
+
     if (targetIndex >= 0 && targetIndex < navItems.length) {
       navigate(navItems[targetIndex].path)
     }
@@ -249,8 +249,8 @@ export default function FreightAnnouncements() {
                     <div className={styles.date}>{item.fromDate}</div>
                   </div>
 
-                  <TruckIcon />
                   <div className={styles.routeLine}></div>
+                  <TruckIcon />
                   <div className={`${styles.routeDot} ${styles.routeDotStart}`}></div>
                   <div className={`${styles.routeDot} ${styles.routeDotEnd}`}></div>
 
@@ -270,17 +270,20 @@ export default function FreightAnnouncements() {
           </div>
         )}
         <div className={styles.pagination}>
+
+
           <div className={styles.paginations}>
             <button
               className={styles.paginationButton}
-              onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+              onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 1}
             >
               <span className={`${styles.icon} ${styles.chevronLeft}`}></span>
             </button>
 
-            <div className={styles.pageNumbers}>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            {Array.from({ length: 5 }, (_, i) => {
+              const page = currentPage + i - 2;
+              return page >= 1 && page <= totalPages ? (
                 <button
                   key={page}
                   className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
@@ -288,17 +291,19 @@ export default function FreightAnnouncements() {
                 >
                   {page}
                 </button>
-              ))}
-            </div>
+              ) : null;
+            })}
 
             <button
               className={styles.paginationButton}
-              onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+              onClick={() => setCurrentPage(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
               <span className={`${styles.icon} ${styles.chevronRight}`}></span>
             </button>
           </div>
+
+
         </div>
       </div>
     </div>

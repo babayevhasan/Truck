@@ -142,18 +142,18 @@ export default function VehicleAnnouncements() {
   ];
 
   const handleNavigation = (direction) => {
-    const currentIndex = navItems.findIndex(item => 
+    const currentIndex = navItems.findIndex(item =>
       location.pathname === item.path || location.pathname.startsWith(item.path + "/")
     );
-  
+
     let targetIndex = currentIndex;
-  
+
     if (direction === "next" && targetIndex < navItems.length - 1) {
       targetIndex += 1;
     } else if (direction === "prev" && targetIndex > 0) {
       targetIndex -= 1;
     }
-  
+
     if (targetIndex >= 0 && targetIndex < navItems.length) {
       navigate(navItems[targetIndex].path);
     }
@@ -262,27 +262,43 @@ export default function VehicleAnnouncements() {
         )}
 
         <div className={styles.pagination}>
+
+
+
           <div className={styles.paginations}>
-            <button className={styles.paginationButton} onClick={handlePrevPage}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
               <ChevronLeftIcon />
             </button>
 
-            <div className={styles.pageNumbers}>
-              {Array.from({ length: totalPages }, (_, index) => (
+            {Array.from({ length: 4 }, (_, i) => {
+              const page = currentPage - 2 + i;
+              return page >= 1 && page <= totalPages ? (
                 <button
-                  key={index}
-                  className={`${styles.pageNumber} ${currentPage === index + 1 ? styles.activePage : ""}`}
-                  onClick={() => handlePageChange(index + 1)}
+                  key={page}
+                  className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
+                  onClick={() => setCurrentPage(page)}
                 >
-                  {index + 1}
+                  {page}
                 </button>
-              ))}
-            </div>
+              ) : null;
+            })}
 
-            <button className={styles.paginationButton} onClick={handleNextPage}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
               <ChevronRightIcon />
             </button>
           </div>
+
+
+
+
         </div>
       </div>
     </div>
