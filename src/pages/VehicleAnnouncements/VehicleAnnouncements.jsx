@@ -260,7 +260,6 @@ export default function VehicleAnnouncements() {
             </table>
           </div>
         )}
-
         <div className={styles.pagination}>
         <div className={styles.paginations}>
                     <button

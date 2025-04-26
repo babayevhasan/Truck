@@ -271,7 +271,6 @@ export default function FreightAnnouncements() {
         )}
         <div className={styles.pagination}>
 
-
           <div className={styles.paginations}>
             <button
               className={styles.paginationButton}
