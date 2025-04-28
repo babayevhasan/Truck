@@ -1,57 +1,49 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import styles from "./Signin.module.css";
 
 export default function Signin() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(null)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSignin = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      })
-      const data = await res.json()
-      if (res.ok) {
-        window.location.href = "/"
-      } else {
-        setError(data.message)
-      }
-    } catch (error) {
-      setError(error.message)
-    }
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const user = { email, password };
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("isAuthenticated", "true");
+
+    alert("succses!");
+    navigate("/");
+  };
 
   return (
-    <div className={styles.container}>
-      <h1>Sign in</h1>
-      <form onSubmit={handleSignin}>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Sign in</button>
+    <div className={styles.signinContainer}>
+      <form onSubmit={handleSubmit} className={styles.signinForm}>
+        <h2>singin</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">singin</button>
+        <p className={styles.linkText}>
+        Do you have an account?{" "}
+          <Link to="/login" className={styles.link}>
+           login
+          </Link>
+        </p>
       </form>
     </div>
-  )
+  );
 }

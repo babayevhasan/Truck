@@ -1,12 +1,12 @@
-.signinContainer {
+.loginContainer {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    /* background: linear-gradient(to right, #74ebd5, #acb6e5); */
   }
   
-  .signinForm {
+  .loginForm {
     background-color: white;
     padding: 40px 30px;
     border-radius: 12px;
@@ -16,12 +16,12 @@
     text-align: center;
   }
   
-  .signinForm h2 {
+  .loginForm h2 {
     margin-bottom: 20px;
     color: #333;
   }
   
-  .signinForm input {
+  .loginForm input {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 20px;
@@ -30,10 +30,10 @@
     font-size: 16px;
   }
   
-  .signinForm button {
+  .loginForm button {
     width: 100%;
     padding: 12px;
-    background-color: #ff5722;
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 8px;
@@ -42,8 +42,8 @@
     transition: background-color 0.3s;
   }
   
-  .signinForm button:hover {
-    background-color: #e64a19;
+  .loginForm button:hover {
+    background-color: #45a049;
   }
   
   .linkText {

@@ -153,21 +153,23 @@
 // }
 
 
-"use client"
-import { useState, useEffect, useContext } from "react"
-import { AuthContext } from "../../../context/AuthContext"; 
-import { Link, useLocation } from "react-router-dom"
-import styles from "./Sidebar.module.css"
-import IconSvg from "../../../assets/icons/icon.svg?react"
-import DashboardIcon from "../../../assets/icons/dashboard.svg?react"
-import SettingsIcon from "../../../assets/icons/settings.svg?react"
-import PackageIcon from "../../../assets/icons/package.svg?react"
-import TruckIcon from "../../../assets/icons/truck.svg?react"
-import MessageIcon from "../../../assets/icons/message.svg?react"
-import UsersIcon from "../../../assets/icons/users.svg?react"
-import UserIcon from "../../../assets/icons/user.svg?react"
-import ChevronLeftIcon from "../../../assets/icons/left.svg?react"
-import { useWindowWidth } from '../useWindowWidth'
+
+
+
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../../../context/AuthContext"; 
+import { Link, useLocation } from "react-router-dom";
+import styles from "./Sidebar.module.css";
+import IconSvg from "../../../assets/icons/icon.svg?react";
+import DashboardIcon from "../../../assets/icons/dashboard.svg?react";
+import SettingsIcon from "../../../assets/icons/settings.svg?react";
+import PackageIcon from "../../../assets/icons/package.svg?react";
+import TruckIcon from "../../../assets/icons/truck.svg?react";
+import MessageIcon from "../../../assets/icons/message.svg?react";
+import UsersIcon from "../../../assets/icons/users.svg?react";
+import UserIcon from "../../../assets/icons/user.svg?react";
+import ChevronLeftIcon from "../../../assets/icons/left.svg?react";
+import { useWindowWidth } from '../useWindowWidth';
 
 const MenuIcon = () => (
   <svg
@@ -184,7 +186,7 @@ const MenuIcon = () => (
     <line x1="3" y1="6" x2="21" y2="6" />
     <line x1="3" y1="18" x2="21" y2="18" />
   </svg>
-)
+);
 
 const CloseIcon = () => (
   <svg
@@ -200,13 +202,14 @@ const CloseIcon = () => (
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
-)
+);
 
 export default function Sidebar({ onToggle }) {
-  const { isAuthenticated  } = useContext(AuthContext);  
+  // AuthContext'ten isAuthenticated'i alıyoruz
+  const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
-    return null; 
+    return null; // Kullanıcı giriş yapmamışsa sidebar görünmesin
   }
 
   const location = useLocation();
@@ -215,7 +218,7 @@ export default function Sidebar({ onToggle }) {
 
   const onResizeWindow = (windowInnerWidth) => {
     if (windowInnerWidth > 768) {
-      setIsMobileMenuOpen(false);
+      setIsMobileMenuOpen(false); // Masaüstü için mobil menüyü kapat
     }
   };
 
@@ -250,43 +253,20 @@ export default function Sidebar({ onToggle }) {
     }
   };
 
-  if (windowWidth > 768) {
-    return (
-      <aside className={`${styles.sidebar} ${isExpanded ? styles.expanded : ""}`}>
-        <nav className={styles.nav}>
-          <ul className={styles.navList}>
-            {navItems.map((item, index) => (
-              <li key={index} className={styles.navItem}>
-                <Link to={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
-                  {item.icon}
-                  <span>{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className={styles.collapseButton}>
-          <button className={styles.iconButton} onClick={toggleExpand}>
-            <ChevronLeftIcon />
-          </button>
-        </div>
-      </aside>
-    );
-  }
-
   return (
     <>
-      <button className={styles.burgerButton} onClick={toggleMobileMenu}>
-        <MenuIcon />
-      </button>
+      {/* Burger Button: Sadece mobilde gözükmeli */}
+      {windowWidth <= 768 && (
+        <button className={styles.burgerButton} onClick={toggleMobileMenu}>
+          <MenuIcon />
+        </button>
+      )}
 
+      {/* Mobil Sidebar */}
       <div className={`${styles.mobileSidebar} ${isMobileMenuOpen ? styles.mobileSidebarOpen : ""}`}>
         <div className={styles.mobileMenuHeader}>
           <button className={styles.mobileCloseButton} onClick={toggleMobileMenu}>
             <CloseIcon />
-          </button>
-          <button onClick={logout} className={styles.logoutButton}>
-            Çıkış Yap
           </button>
         </div>
         <nav className={styles.mobileNav}>
@@ -306,9 +286,34 @@ export default function Sidebar({ onToggle }) {
           </ul>
         </nav>
       </div>
+
+      {/* Masaüstü Sidebar: Genişletilebilir sidebar */}
+      {windowWidth > 768 && (
+        <aside className={`${styles.sidebar} ${isExpanded ? styles.expanded : ""}`}>
+          <nav className={styles.nav}>
+            <ul className={styles.navList}>
+              {navItems.map((item, index) => (
+                <li key={index} className={styles.navItem}>
+                  <Link to={item.path} className={`${styles.navLink} ${isActive(item.path) ? styles.active : ""}`}>
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className={styles.collapseButton}>
+            <button className={styles.iconButton} onClick={toggleExpand}>
+              <ChevronLeftIcon />
+            </button>
+          </div>
+        </aside>
+      )}
     </>
   );
 }
+
+
 
 
 

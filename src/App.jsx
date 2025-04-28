@@ -57,6 +57,8 @@
 // }
 
 
+
+
 "use client";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -66,7 +68,10 @@ import MainLayout from "./components/layout/MainLayout";
 import FreightAnnouncements from "./pages/FreightAnnouncements/FreightAnnouncements";
 import VehicleAnnouncements from "./pages/VehicleAnnouncements/VehicleAnnouncements";
 import VehicleAnnouncement from "./pages/VehicleAnnouncements/VehicleAnnouncement";
+import Dashboard from "./pages/Dashboard/Dashboard";
+
 import Login from "./pages/registr/Login";
+import Signin from "./pages/registr/Signin";  
 
 export default function App() {
   return (
@@ -74,10 +79,11 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<Signin />} /> 
 
           <Route element={<ProtectedRoute />}>
             <Route element={<MainLayout />}>
-              <Route index element={<div>Dashboard</div>} />
+              <Route path="/" index element={<Dashboard/>} />
               <Route path="freight-announcements" element={<FreightAnnouncements />} />
               <Route path="vehicle-announcements" element={<VehicleAnnouncements />} />
               <Route path="vehicle-announcements/:id" element={<VehicleAnnouncement />} />
@@ -95,6 +101,7 @@ export default function App() {
     </AuthProvider>
   );
 }
+
 
 
 

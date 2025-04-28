@@ -1,41 +1,57 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import styles from "./Login.module.css";
 import { useAuth } from "../../context/AuthContext"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth(); 
+  const { login, isAuthenticated } = useAuth(); 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");  
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (email === "admin@gmail.com" && password === "123456") {
-      await login(email, password); 
+      await login(email, password);
       navigate("/"); 
     } else {
-      alert("Hatalı giriş!");
+      alert("Incorrect login!");
     }
   };
 
   return (
-    <div>
-      <h2>Giriş Yap</h2>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.loginContainer}>
+      <form onSubmit={handleSubmit} className={styles.loginForm}>
+        <h2>Login</h2>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           type="password"
-          placeholder="Şifre"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
-        <button type="submit">Giriş Yap</button>
+        <button type="submit">Log in</button>
+        <p className={styles.linkText}>
+          Don't have an account?{" "}
+          <Link to="/signin" className={styles.link}>
+            Sign Up
+          </Link>
+        </p>
       </form>
     </div>
   );
