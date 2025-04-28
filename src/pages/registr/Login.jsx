@@ -1,8 +1,70 @@
 
+
+// import { useState, useEffect } from "react";
+// import { useNavigate, Link } from "react-router-dom";
+// import styles from "./Login.module.css";
+// import { useAuth } from "../../context/AuthContext";
+
+// export default function Login() {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const { login, isAuthenticated } = useAuth(); 
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (isAuthenticated) {
+//       navigate("/"); 
+//     }
+//   }, [isAuthenticated, navigate]);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     if (email === "admin@gmail.com" && password === "123456") {
+//       await login(email, password); 
+//       navigate("/"); 
+//     } else {
+//       alert("Incorrect login!"); 
+//     }
+//   };
+
+//   return (
+//     <div className={styles.loginContainer}>
+//       <form onSubmit={handleSubmit} className={styles.loginForm}>
+//         <h2>Login</h2>
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <button type="submit">Log in</button>
+//         <p className={styles.linkText}>
+//           Don't have an account?{" "}
+//           <Link to="/signin" className={styles.link}>
+//             Sign Up
+//           </Link>
+//         </p>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+
+
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Login.module.css";
-import { useAuth } from "../../context/AuthContext"; 
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,18 +74,20 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");  
+      navigate("/"); 
     }
   }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (email === "admin@gmail.com" && password === "123456") {
-      await login(email, password);
+    const storedUser = JSON.parse(localStorage.getItem("user")); 
+
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      await login(email, password); 
       navigate("/"); 
     } else {
-      alert("Incorrect login!");
+      alert("Incorrect login!"); 
     }
   };
 
@@ -40,7 +104,7 @@ export default function Login() {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

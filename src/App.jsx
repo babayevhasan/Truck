@@ -56,9 +56,6 @@
 //   )
 // }
 
-
-
-
 "use client";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -72,7 +69,6 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 
 import Login from "./pages/registr/Login";
 import Signin from "./pages/registr/Signin";  
-
 export default function App() {
   return (
     <AuthProvider>

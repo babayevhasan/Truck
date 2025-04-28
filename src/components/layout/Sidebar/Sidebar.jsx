@@ -154,8 +154,6 @@
 
 
 
-
-
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../../context/AuthContext"; 
 import { Link, useLocation } from "react-router-dom";
@@ -205,11 +203,10 @@ const CloseIcon = () => (
 );
 
 export default function Sidebar({ onToggle }) {
-  // AuthContext'ten isAuthenticated'i alıyoruz
   const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
-    return null; // Kullanıcı giriş yapmamışsa sidebar görünmesin
+    return null;
   }
 
   const location = useLocation();
@@ -218,7 +215,7 @@ export default function Sidebar({ onToggle }) {
 
   const onResizeWindow = (windowInnerWidth) => {
     if (windowInnerWidth > 768) {
-      setIsMobileMenuOpen(false); // Masaüstü için mobil menüyü kapat
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -255,14 +252,12 @@ export default function Sidebar({ onToggle }) {
 
   return (
     <>
-      {/* Burger Button: Sadece mobilde gözükmeli */}
       {windowWidth <= 768 && (
         <button className={styles.burgerButton} onClick={toggleMobileMenu}>
           <MenuIcon />
         </button>
       )}
 
-      {/* Mobil Sidebar */}
       <div className={`${styles.mobileSidebar} ${isMobileMenuOpen ? styles.mobileSidebarOpen : ""}`}>
         <div className={styles.mobileMenuHeader}>
           <button className={styles.mobileCloseButton} onClick={toggleMobileMenu}>
@@ -287,7 +282,6 @@ export default function Sidebar({ onToggle }) {
         </nav>
       </div>
 
-      {/* Masaüstü Sidebar: Genişletilebilir sidebar */}
       {windowWidth > 768 && (
         <aside className={`${styles.sidebar} ${isExpanded ? styles.expanded : ""}`}>
           <nav className={styles.nav}>
