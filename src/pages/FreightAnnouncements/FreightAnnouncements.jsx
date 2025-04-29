@@ -99,6 +99,7 @@ export default function FreightAnnouncements() {
     }
   }
 
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>

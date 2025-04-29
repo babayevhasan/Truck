@@ -77,6 +77,10 @@ export default function VehicleAnnouncements() {
     }
   }, [])
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedStatus]);
+
   const toggleSelect = () => {
     setIsSelectOpen(!isSelectOpen)
   }
@@ -115,21 +119,6 @@ export default function VehicleAnnouncements() {
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage)
 
-  // const handlePageChange = (page) => {
-  //   setCurrentPage(page)
-  // }
-
-  // const handleNextPage = () => {
-  //   if (currentPage < totalPages) {
-  //     setCurrentPage(currentPage + 1)
-  //   }
-  // }
-
-  // const handlePrevPage = () => {
-  //   if (currentPage > 1) {
-  //     setCurrentPage(currentPage - 1)
-  //   }
-  // }
   const navItems = [
     { label: "Dashboard", path: "/" },
     { label: "Seçim Konfiqurasiyası", path: "/configuration" },
@@ -260,6 +249,7 @@ export default function VehicleAnnouncements() {
             </table>
           </div>
         )}
+
         <div className={styles.pagination}>
           <div className={styles.paginations}>
             <button
@@ -293,6 +283,7 @@ export default function VehicleAnnouncements() {
             </button>
           </div>
         </div>
+
       </div>
     </div>
   )
