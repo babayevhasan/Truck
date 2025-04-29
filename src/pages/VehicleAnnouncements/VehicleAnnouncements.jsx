@@ -53,7 +53,6 @@ const ChevronDownIcon = () => (
     <polyline points="6 9 12 15 18 9" />
   </svg>
 )
-
 export default function VehicleAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
   const [currentPage, setCurrentPage] = useState(1)
