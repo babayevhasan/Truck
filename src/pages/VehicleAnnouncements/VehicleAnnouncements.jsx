@@ -141,7 +141,7 @@ export default function VehicleAnnouncements() {
     { label: "Tranzaksiya", path: "/transactions" },
   ];
 
-  const handleNavigation = (direction) => { 
+  const handleNavigation = (direction) => {
     const currentIndex = navItems.findIndex(item =>
       location.pathname === item.path || location.pathname.startsWith(item.path + "/")
     );
@@ -261,36 +261,37 @@ export default function VehicleAnnouncements() {
           </div>
         )}
         <div className={styles.pagination}>
-        <div className={styles.paginations}>
-                    <button
-                      className={styles.paginationButton}
-                      onClick={() => setCurrentPage(currentPage - 1)}
-                      disabled={currentPage === 1}
-                    >
-                      <span className={`${styles.icon} ${styles.chevronLeft}`}><ChevronLeftIcon/> </span>
-                    </button>
-        
-                    {Array.from({ length: 5 }, (_, i) => {
-                      const page = currentPage + i - 2;
-                      return page >= 1 && page <= totalPages ? (
-                        <button
-                          key={page}
-                          className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
-                          onClick={() => setCurrentPage(page)}
-                        >
-                          {page}
-                        </button>
-                      ) : null;
-                    })}
-        
-                    <button
-                      className={styles.paginationButton}
-                      onClick={() => setCurrentPage(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                    >
-                      <span className={`${styles.icon} ${styles.chevronRight}`}><ChevronRightIcon/> </span>
-                    </button>
-                  </div>
+          <div className={styles.paginations}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <span className={`${styles.icon} ${styles.chevronLeft}`}><ChevronLeftIcon /> </span>
+            </button>
+
+            {Array.from({ length: 3 }, (_, i) => {
+              const firstPage = Math.max(1, currentPage - 2);
+              const page = firstPage + i;
+              return page <= totalPages ? (
+                <button
+                  key={page}
+                  className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ) : null;
+            })}
+
+            <button
+              className={styles.paginationButton}
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              <span className={`${styles.icon} ${styles.chevronRight}`}><ChevronRightIcon /> </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

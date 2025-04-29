@@ -269,8 +269,9 @@ export default function FreightAnnouncements() {
             ))}
           </div>
         )}
-        <div className={styles.pagination}>
 
+
+        <div className={styles.pagination}>
           <div className={styles.paginations}>
             <button
               className={styles.paginationButton}
@@ -280,9 +281,10 @@ export default function FreightAnnouncements() {
               <span className={`${styles.icon} ${styles.chevronLeft}`}></span>
             </button>
 
-            {Array.from({ length: 5 }, (_, i) => {
-              const page = currentPage + i - 2;
-              return page >= 1 && page <= totalPages ? (
+            {Array.from({ length: 3 }, (_, i) => {
+              const firstPage = Math.max(1, currentPage - 2);
+              const page = firstPage + i;
+              return page <= totalPages ? (
                 <button
                   key={page}
                   className={`${styles.pageNumber} ${currentPage === page ? styles.activePage : ''}`}
@@ -301,9 +303,9 @@ export default function FreightAnnouncements() {
               <span className={`${styles.icon} ${styles.chevronRight}`}></span>
             </button>
           </div>
-
-
         </div>
+
+
       </div>
     </div>
   )
