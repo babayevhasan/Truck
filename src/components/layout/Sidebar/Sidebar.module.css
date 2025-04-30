@@ -31,6 +31,7 @@
     margin-bottom: 0.25rem;
   }
   
+
   .navLink {
     display: flex;
     align-items: center;
@@ -41,6 +42,8 @@
     transition: background-color 0.2s;
     white-space: nowrap;
   }
+  
+
   
   .navLink span {
     margin-left: 0.75rem;
