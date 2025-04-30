@@ -6,25 +6,25 @@
 // export default function Login() {
 //   const [email, setEmail] = useState("");
 //   const [password, setPassword] = useState("");
-//   const { login, isAuthenticated } = useAuth(); 
+//   const { login, isAuthenticated, isLoading } = useAuth();
 //   const navigate = useNavigate();
 
 //   useEffect(() => {
-//     if (isAuthenticated) {
-//       navigate("/"); 
+//     if (isAuthenticated && isAuthenticated) {
+//       navigate("/");
 //     }
-//   }, [isAuthenticated, navigate]);
-
+//   }, [isAuthenticated, isLoading, navigate]);
+//   if (isLoading) return null;
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 
-//     const storedUser = JSON.parse(localStorage.getItem("user")); 
+//     const storedUser = JSON.parse(localStorage.getItem("user"));
 
 //     if (storedUser && storedUser.email === email && storedUser.password === password) {
-//       await login(email, password); 
-//       navigate("/"); 
+//       await login(email, password);
+//       navigate("/");
 //     } else {
-//       alert("Incorrect login!"); 
+//       alert("Incorrect login!");
 //     }
 //   };
 
@@ -59,6 +59,9 @@
 // }
 
 
+
+
+
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Login.module.css";
@@ -71,17 +74,24 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && isAuthenticated) {
+    if (isAuthenticated) {
       navigate("/");
     }
   }, [isAuthenticated, isLoading, navigate]);
+
   if (isLoading) return null;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedUser && storedUser.email === email && storedUser.password === password) {
+    if (
+      storedUser &&
+      storedUser.email === email &&
+      storedUser.password === password
+    ) {
+      // Giriş başarılıysa AuthContext'e bilgileri aktar
       await login(email, password);
       navigate("/");
     } else {

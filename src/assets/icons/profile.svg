@@ -1,0 +1,20 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="20"
+  height="21"
+  viewBox="2 0 20 21"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-miterlimit="10"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  className="icon icon-profile"
+>
+  <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M4 21v-2a4 4 0 0 1 3-3.87" />
+  <circle cx="12" cy="7" r="4" />
+</svg>
+
+
+

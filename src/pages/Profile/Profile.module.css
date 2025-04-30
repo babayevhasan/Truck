@@ -1,0 +1,158 @@
+/* Profil sayfası genel konteyneri */
+.profileContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Profil bilgileri kısmı */
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profil resmi konteyneri */
+.profileImageContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ddd;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.noImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.imageInput {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Kullanıcı bilgileri formu */
+.inputContainer {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.inputContainer label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+/* Profil güncelleme ve çıkış butonları */
+.buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.updateProfileButton,
+.logoutButton {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.updateProfileButton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.updateProfileButton:hover {
+  background-color: #45a049;
+}
+
+.logoutButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.logoutButton:hover {
+  background-color: #e53935;
+}
+
+/* Responsive tasarım: Mobil uyumlu */
+@media (max-width: 768px) {
+  .profileContainer {
+    padding: 15px;
+  }
+
+  .profileInfo {
+    padding: 15px;
+  }
+
+  .profileImageContainer {
+    width: 120px;
+    height: 120px;
+  }
+
+  .inputContainer {
+    margin-bottom: 12px;
+  }
+
+  .input {
+    padding: 10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .updateProfileButton,
+  .logoutButton {
+    width: 100%;
+  }
+}

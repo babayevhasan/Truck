@@ -8,37 +8,40 @@
 // export const AuthProvider = ({ children }) => {
 //   const [isAuthenticated, setIsAuthenticated] = useState(false);
 //   const [user, setUser] = useState(null);
+//   const [isLoading, setIsLoading] = useState(true); 
 
 //   useEffect(() => {
 //     const storedUser = localStorage.getItem("user");
 //     if (storedUser) {
-//       setIsAuthenticated(true);  
-//       setUser(JSON.parse(storedUser)); 
+//       setIsAuthenticated(true);
+//       setUser(JSON.parse(storedUser));
 //     }
+//     setIsLoading(false); 
 //   }, []);
 
 //   const login = (email, password) => {
 //     const storedUser = JSON.parse(localStorage.getItem("user"));
 //     if (storedUser && storedUser.email === email && storedUser.password === password) {
-//       setIsAuthenticated(true); 
-//       setUser(storedUser);  
+//       setIsAuthenticated(true);
+//       setUser(storedUser);
 //     }
 //   };
 
 //   const logout = () => {
-//     localStorage.removeItem("user");  
-//     setIsAuthenticated(false);  
-//     setUser(null);  
+//     localStorage.removeItem("user");
+//     setIsAuthenticated(false);
+//     setUser(null);
 //   };
 
 //   return (
-//     <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+//     <AuthContext.Provider value={{ isAuthenticated, user, login, logout, isLoading }}>
 //       {children}
 //     </AuthContext.Provider>
 //   );
 // };
 
 // export default AuthContext;
+
 
 
 
@@ -52,7 +55,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // ✅ Yeni loading durumu
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -60,7 +63,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       setUser(JSON.parse(storedUser));
     }
-    setIsLoading(false); // ✅ Yükleme tamamlandı
+    setIsLoading(false);
   }, []);
 
   const login = (email, password) => {
@@ -77,8 +80,13 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, isLoading }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, updateUser, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

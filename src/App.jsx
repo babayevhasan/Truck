@@ -63,6 +63,7 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import MainLayout from "./components/layout/MainLayout";
 import FreightAnnouncements from "./pages/FreightAnnouncements/FreightAnnouncements";
+import Profile from "./pages/Profile/Profile";
 import VehicleAnnouncements from "./pages/VehicleAnnouncements/VehicleAnnouncements";
 import VehicleAnnouncement from "./pages/VehicleAnnouncements/VehicleAnnouncement";
 import Dashboard from "./pages/Dashboard/Dashboard";
@@ -80,6 +81,7 @@ export default function App() {
           <Route element={<ProtectedRoute />}>
             <Route element={<MainLayout />}>
               <Route path="/" index element={<Dashboard/>} />
+              <Route path="profile" element={< Profile/>} />
               <Route path="freight-announcements" element={<FreightAnnouncements />} />
               <Route path="vehicle-announcements" element={<VehicleAnnouncements />} />
               <Route path="vehicle-announcements/:id" element={<VehicleAnnouncement />} />

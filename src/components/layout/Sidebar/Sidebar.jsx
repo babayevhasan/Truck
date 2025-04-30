@@ -11,6 +11,7 @@ import MessageIcon from "../../../assets/icons/message.svg?react";
 import UsersIcon from "../../../assets/icons/users.svg?react";
 import UserIcon from "../../../assets/icons/user.svg?react";
 import ChevronLeftIcon from "../../../assets/icons/left.svg?react";
+import Profile from "../../../assets/icons/profile.svg?react";
 import { useWindowWidth } from '../useWindowWidth';
 
 const MenuIcon = () => (
@@ -76,6 +77,7 @@ export default function Sidebar({ onToggle }) {
 
   const navItems = [
     { label: "Dashboard", path: "/", icon: <DashboardIcon /> },
+    { label: "Profil", path: "/profile", icon: <Profile /> },
     { label: "Seçim Konfiqurasiyası", path: "/configuration", icon: <SettingsIcon /> },
     { label: "Yük elanları", path: "/freight-announcements", icon: <PackageIcon /> },
     { label: "Yük maşını elanları", path: "/vehicle-announcements", icon: <TruckIcon /> },
