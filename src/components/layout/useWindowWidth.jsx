@@ -1,22 +1,25 @@
-// import { useEffect, useState } from 'react'
+
+// import { useEffect, useState } from 'react';
 
 // export const useWindowWidth = (callbackFn) => {
-// 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+//   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setWindowWidth(window.innerWidth);
 
+//       if (typeof callbackFn === "function") {
+//         callbackFn(window.innerWidth);
+//       }
+//     };
 
-// 	useEffect(() => {
-// 		const handleResize = () => {
-// 			setWindowWidth(window.innerWidth)
-// 			callbackFn(window.innerWidth)
-// 		}
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, [callbackFn]); 
 
-// 		window.addEventListener("resize", handleResize)
-// 		return () => window.removeEventListener("resize", handleResize)
-// 	}, []);
+//   return { windowWidth, setWindowWidth };
+// };
 
-// 	return {windowWidth, setWindowWidth}
-// }
 
 
 import { useEffect, useState } from 'react';
@@ -26,16 +29,18 @@ export const useWindowWidth = (callbackFn) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-
+      const width = window.innerWidth;
+      setWindowWidth(width);
       if (typeof callbackFn === "function") {
-        callbackFn(window.innerWidth);
+        callbackFn(width);
       }
     };
 
+    handleResize();
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [callbackFn]); 
+  }, [callbackFn]);
 
-  return { windowWidth, setWindowWidth };
+  return { windowWidth };
 };
