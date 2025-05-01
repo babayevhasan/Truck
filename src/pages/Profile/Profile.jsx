@@ -249,7 +249,7 @@ export default function Profile() {
             localStorage.setItem("user", JSON.stringify(updatedUser));
           } catch (error) {
             console.error(error);
-            alert("Profil resmi kaydedilemedi. Lütfen tekrar deneyin.");
+            alert("Profile picture could not be saved. Please try again.");
           }
         }
       };
@@ -272,6 +272,11 @@ export default function Profile() {
   };
 
   const handlePasswordChange = () => {
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
     if (newPassword !== confirmPassword) {
       alert("New password and confirm password do not match.");
     } else {
@@ -287,7 +292,7 @@ export default function Profile() {
         alert("Current password is incorrect.");
       }
     }
-  
+
     setCurrentPassword("");
     setNewPassword("");
     setConfirmPassword("");
@@ -351,6 +356,7 @@ export default function Profile() {
           <input
             type="password"
             id="currentPassword"
+            placeholder=" ********"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             className={styles.input}
@@ -362,6 +368,7 @@ export default function Profile() {
           <input
             type="password"
             id="newPassword"
+            // placeholder=" ********"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             className={styles.input}
@@ -373,6 +380,7 @@ export default function Profile() {
           <input
             type="password"
             id="confirmPassword"
+            // placeholder=" ********"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className={styles.input}

@@ -165,6 +165,7 @@
 
 .tableContainer {
   overflow-x: auto;
+  min-height: 310px;
 }
 
 .table {
