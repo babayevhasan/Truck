@@ -70,6 +70,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 
 import Login from "./pages/registr/Login";
 import Signin from "./pages/registr/Signin";  
+import Forgot from "./pages/registr/Forgot";  
+
 export default function App() {
   return (
     <AuthProvider>
@@ -77,6 +79,7 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Signin />} /> 
+          <Route path="/forgot" element={<Forgot />} /> 
 
           <Route element={<ProtectedRoute />}>
             <Route element={<MainLayout />}>

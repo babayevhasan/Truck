@@ -124,6 +124,11 @@ export default function Login() {
             Sign Up
           </Link>
         </p>
+        <p className={styles.linkText}>
+          <Link to="/forgot" className={styles.link}>
+          Forgot password?{" "}
+          </Link>
+        </p>
       </form>
     </div>
   );

@@ -52,6 +52,9 @@
   opacity: 0;
   cursor: pointer;
 }
+.forgotPassword{
+  color: rgb(87, 87, 155);
+}
 .inputContainer {
   width: 100%;
   max-width: 350px;

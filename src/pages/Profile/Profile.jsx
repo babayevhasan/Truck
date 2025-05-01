@@ -197,10 +197,9 @@
 
 
 
-
 import { useAuth } from "../../context/AuthContext";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./Profile.module.css";
 
 export default function Profile() {
@@ -261,7 +260,7 @@ export default function Profile() {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     const updatedUser = {
-      ...storedUser, 
+      ...storedUser,
       name,
       email,
       profileImage,
@@ -292,12 +291,10 @@ export default function Profile() {
         alert("Current password is incorrect.");
       }
     }
-
     setCurrentPassword("");
     setNewPassword("");
     setConfirmPassword("");
   };
-  
 
   return (
     <div className={`container mx-auto p-6 ${styles.profileContainer}`}>
@@ -368,7 +365,6 @@ export default function Profile() {
           <input
             type="password"
             id="newPassword"
-            // placeholder=" ********"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             className={styles.input}
@@ -380,7 +376,6 @@ export default function Profile() {
           <input
             type="password"
             id="confirmPassword"
-            // placeholder=" ********"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className={styles.input}
@@ -404,6 +399,9 @@ export default function Profile() {
             Logout
           </button>
         </div>
+        <Link to="/forgot" className={styles.forgotPassword}>
+          -Forgot Password?-
+        </Link>
       </div>
     </div>
   );
