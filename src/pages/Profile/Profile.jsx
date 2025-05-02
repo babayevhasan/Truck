@@ -201,7 +201,7 @@ export default function Profile() {
           </button>
         </div>
         <Link to="/forgot" className={styles.forgotPassword}>
-          -Forgot Current Password?-
+          - Forgot Current Password? -
         </Link>
       </div>
     </div>

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./Forgot.module.css"; 
+import { useNavigate, Link } from "react-router-dom";
+import styles from "./Forgot.module.css";
 
 export default function Forgot() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export default function Forgot() {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser && storedUser.email === email) {
-      setStep(2); 
+      setStep(2);
     } else {
       alert("Email not found!");
     }
@@ -65,6 +65,9 @@ export default function Forgot() {
             <button type="submit">Change Password</button>
           </>
         )}
+        <p className={styles.link}>
+          <Link to="/profile"> - Back to Profile -</Link>
+        </p>
       </form>
     </div>
   );
