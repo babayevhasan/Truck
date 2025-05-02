@@ -1,52 +1,72 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import styles from "./Forgot.module.css";
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Forgot.module.css"; 
 
 export default function Forgot() {
   const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [step, setStep] = useState(1);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleCheckEmail = (e) => {
     e.preventDefault();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    try {
-      const response = await fetch("/api/forgot", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+    if (storedUser && storedUser.email === email) {
+      setStep(2); 
+    } else {
+      alert("Email not found!");
+    }
+  };
 
-      if (response.ok) {
-        alert("Check your email for a link to reset your password.");
-        navigate("/login");
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+  const handleChangePassword = (e) => {
+    e.preventDefault();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser) {
+      const updatedUser = {
+        ...storedUser,
+        password: newPassword,
+      };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      alert("Password successfully changed!");
+      navigate("/login");
     }
   };
 
   return (
     <div className={styles.forgotContainer}>
-      <form onSubmit={handleSubmit} className={styles.forgotForm}>
+      <form onSubmit={step === 1 ? handleCheckEmail : handleChangePassword} className={styles.forgotForm}>
         <h2>Forgot Password</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <button type="submit">Send Reset Link</button>
 
-        <p className={styles.linkText}>
-          <Link to="/login" className={styles.link}>
-            Go back to login
-          </Link>
-        </p>
+        {step === 1 && (
+          <>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit">Continue</button>
+          </>
+        )}
+
+        {step === 2 && (
+          <>
+            <input
+              type="password"
+              placeholder="Enter new password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+            <button type="submit">Change Password</button>
+          </>
+        )}
       </form>
     </div>
   );
 }
+
