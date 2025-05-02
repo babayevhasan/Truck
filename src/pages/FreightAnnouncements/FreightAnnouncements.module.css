@@ -1,7 +1,7 @@
 .container {
   background-color: white;
   border-radius: 0.5rem;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
 }
@@ -440,6 +440,8 @@
   }
   .container {
     width: 90%;
+    /* background-color: red; */
+    height: auto;
     margin: auto;
   }
 
