@@ -353,7 +353,7 @@
 }
 
 .paginations {
-  padding:10px 5px;
+  padding: 10px 5px;
   border: solid 1px rgb(234, 234, 234);
   display: flex;
   align-items: center;
@@ -435,8 +435,12 @@
 
 @media (max-width: 768px) {
   .pagination {
-      display: flex !important;
-  
+    display: flex !important;
+
+  }
+  .container {
+    width: 90%;
+    margin: auto;
   }
 
 }
@@ -466,4 +470,3 @@
     right: 10%;
   }
 }
-
