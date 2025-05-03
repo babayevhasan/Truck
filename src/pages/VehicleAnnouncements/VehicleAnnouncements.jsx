@@ -120,6 +120,7 @@ export default function VehicleAnnouncements() {
 
   const navItems = [
     { label: "Dashboard", path: "/" },
+    { label: "Profil", path: "/profile" },
     { label: "Seçim Konfiqurasiyası", path: "/configuration" },
     { label: "Yük elanları", path: "/freight-announcements" },
     { label: "Yük maşını elanları", path: "/vehicle-announcements" },

@@ -70,6 +70,7 @@ export default function FreightAnnouncements() {
 
   const navItems = [
     { path: "/" },
+    { path: "/profile" },
     { path: "/configuration" },
     { path: "/freight-announcements" },
     { path: "/vehicle-announcements" },
