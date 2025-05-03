@@ -290,3 +290,10 @@
 .ellipsis {
   color: #6b7280;
 }
+@media (max-width: 768px) {
+  .container {
+    margin: auto;
+    max-width: 88%;
+    /* background-color: red; */
+  }
+}
