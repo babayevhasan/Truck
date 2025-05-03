@@ -283,7 +283,6 @@ export default function VehicleAnnouncements() {
             </button>
           </div>
         </div>
-
       </div>
     </div>
   )

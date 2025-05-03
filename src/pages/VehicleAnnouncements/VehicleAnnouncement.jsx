@@ -10,10 +10,7 @@ import CancelIcon from '../../assets/icons/cancel.svg?react';
 import CheckIcon from '../../assets/icons/check.svg?react';
 import TruckIcon from '../../assets/icons/truckabout.svg?react';
 import LocationIcon from '../../assets/icons/location.svg?react';
-import ChevronLeftIcon from '../../assets/icons/leftnav.svg?react';
-import ChevronRightIcon from '../../assets/icons/rightnav.svg?react';
 import Back from '../../assets/icons/back.svg?react';
-
 
 const ChevronDownIcon = () => (
   <svg
@@ -104,14 +101,8 @@ export default function VehicleAnnouncement() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-          <div className={styles.navigationButtons}>
-            {/* <button className={styles.navButton}>
-              <ChevronLeftIcon />
-            </button>
-            <button className={styles.navButton}>
-              <ChevronRightIcon />
-            </button> */}
-          </div>
+        <div className={styles.navigationButtons}>
+        </div>
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
             <BellIcon />
@@ -281,7 +272,7 @@ export default function VehicleAnnouncement() {
           ))}
 
           <button className={styles.addReasonButton} onClick={handleAddReason}>
-            <PlusIcon />  
+            <PlusIcon />
             <span>Yenisini əlavə et</span>
           </button>
 
