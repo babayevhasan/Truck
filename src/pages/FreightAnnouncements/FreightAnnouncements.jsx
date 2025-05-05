@@ -291,7 +291,7 @@ import Bell from "../../assets/icons/bell.svg?react"
 import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
 import freightData from '../FreightAnnouncements/freightData.json'
-import EditModal from './EditModal'
+import EditModal from '../FreightAnnouncements/Edit/EditModal'
 
 export default function FreightAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")

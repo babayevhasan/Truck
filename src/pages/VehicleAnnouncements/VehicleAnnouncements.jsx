@@ -290,8 +290,6 @@
 
 
 
-
-
 "use client"
 
 import { useState, useRef, useEffect } from "react"
@@ -302,7 +300,7 @@ import BellIcon from "../../assets/icons/bell.svg?react"
 import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
 import vehicleData from '../VehicleAnnouncements/vehicleData.json'
-import EditModal from './EditModal'
+import EditModal from '../FreightAnnouncements/Edit/EditModal'
 
 const ChevronLeftIcon = () => (
   <svg

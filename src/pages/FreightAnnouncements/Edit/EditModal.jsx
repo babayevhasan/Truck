@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import styles from './EditModal.module.css';
+import styles from '../Edit/EditModal.module.css';
 
 export default function EditModal({ 
   item, 
