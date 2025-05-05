@@ -32,8 +32,9 @@
 }
 
 .content {
-  padding: 1.5rem;
+  padding: 1rem;
 }
+
 
 .title {
   font-size: 1.5rem;
@@ -232,7 +233,7 @@
 
 .deleteButton {
   padding: 5px 10px;
-  background-color: #ab0003;
+  background-color: #e53935;
   color: white;
   border: none;
   border-radius: 4px;
@@ -249,7 +250,7 @@
 }
 
 .deleteButton:hover {
-  background-color: #ff7875;
+  background-color: #cf0300;
 }
 
 .editButton:hover {
