@@ -7,7 +7,7 @@ import CalendarIcon from "../../assets/icons/calendar.svg?react"
 import BellIcon from "../../assets/icons/bell.svg?react"
 import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
-import freightData from '../FreightAnnouncements/freightData.json'
+import vehicleData  from '../VehicleAnnouncements/vehicleData.json'
 
 const ChevronLeftIcon = () => (
   <svg
@@ -108,7 +108,7 @@ export default function VehicleAnnouncements() {
   }
 
   const filteredData =
-    selectedStatus === "Status seç" ? freightData : freightData.filter((item) => item.status === selectedStatus)
+    selectedStatus === "Status seç" ? vehicleData  : vehicleData .filter((item) => item.status === selectedStatus)
 
   const itemsPerPage = 5
 

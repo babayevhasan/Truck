@@ -15,8 +15,6 @@ export default function FreightAnnouncements() {
   const [isSelectOpen, setIsSelectOpen] = useState(false)
   const [selectedStatus, setSelectedStatus] = useState("Status seç")
   const selectRef = useRef(null)
-
-
   const filteredData =
     selectedStatus === "Status seç"
       ? freightData
@@ -36,7 +34,6 @@ export default function FreightAnnouncements() {
         setIsSelectOpen(false)
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside)
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
@@ -46,13 +43,11 @@ export default function FreightAnnouncements() {
   const toggleSelect = () => {
     setIsSelectOpen(!isSelectOpen)
   }
-
   const handleSelectOption = (option) => {
     setSelectedStatus(option)
     setCurrentPage(1)
     setIsSelectOpen(false)
   }
-
   const getStatusClass = (status) => {
     switch (status) {
       case "Ləğv":
@@ -67,7 +62,6 @@ export default function FreightAnnouncements() {
         return ""
     }
   }
-
   const navItems = [
     { path: "/" },
     { path: "/profile" },
@@ -81,7 +75,6 @@ export default function FreightAnnouncements() {
   ]
 
   const navigate = useNavigate()
-
   const handleNavigation = (direction) => {
     const currentIndex = navItems.findIndex(item =>
       location.pathname === item.path || location.pathname.startsWith(item.path + "/")
@@ -94,13 +87,10 @@ export default function FreightAnnouncements() {
     } else if (direction === "prev" && targetIndex > 0) {
       targetIndex -= 1
     }
-
     if (targetIndex >= 0 && targetIndex < navItems.length) {
       navigate(navItems[targetIndex].path)
     }
   }
-
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -113,14 +103,12 @@ export default function FreightAnnouncements() {
             <RightNav />
           </button>
         </div>
-
         <div className={styles.notifications}>
           <button className={styles.notificationButton}>
             <Bell />
           </button>
         </div>
       </div>
-
       <div className={styles.content}>
         <h1 className={styles.title}>Yük elanları</h1>
 
@@ -138,7 +126,6 @@ export default function FreightAnnouncements() {
             Elan cədvəli
           </button>
         </div>
-
         <div className={styles.filterContainer}>
           <div className={styles.customSelectWrapper} ref={selectRef}>
             <div
@@ -163,7 +150,6 @@ export default function FreightAnnouncements() {
             )}
           </div>
         </div>
-
         {activeTab === "table" && (
           <div className={styles.tableContainer}>
             <table className={styles.table}>
@@ -210,7 +196,6 @@ export default function FreightAnnouncements() {
             </table>
           </div>
         )}
-
         {activeTab === "cards" && (
           <div className={styles.cardsContainer}>
             {currentItems.map((item, index) => (
@@ -229,21 +214,9 @@ export default function FreightAnnouncements() {
                     {item.status}
                   </div>
                   <button className={styles.bookmarkButton}>
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                   </button>
                 </div>
-
                 <div className={styles.cardContent}>
                   <div className={styles.locationInfo}>
                     <div className={styles.city}>{item.fromLocation},</div>
@@ -271,8 +244,6 @@ export default function FreightAnnouncements() {
             ))}
           </div>
         )}
-
-
         <div className={styles.pagination}>
           <div className={styles.paginations}>
             <button
@@ -282,7 +253,6 @@ export default function FreightAnnouncements() {
             >
               <span className={`${styles.icon} ${styles.chevronLeft}`}></span>
             </button>
-
             {Array.from({ length: 3 }, (_, i) => {
               const firstPage = Math.max(1, currentPage - 2);
               const page = firstPage + i;
@@ -296,7 +266,6 @@ export default function FreightAnnouncements() {
                 </button>
               ) : null;
             })}
-
             <button
               className={styles.paginationButton}
               onClick={() => setCurrentPage(currentPage + 1)}
@@ -306,9 +275,9 @@ export default function FreightAnnouncements() {
             </button>
           </div>
         </div>
-
-
       </div>
     </div>
   )
 }
+
+
