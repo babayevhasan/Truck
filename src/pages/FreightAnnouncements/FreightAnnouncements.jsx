@@ -30,6 +30,7 @@ export default function FreightAnnouncements() {
 
   const handleViewDetails = () => {
     navigate("/vehicle-announcements/:id");
+    
   };
 
   const filteredData =
@@ -340,5 +341,7 @@ export default function FreightAnnouncements() {
     </div>
   )
 }
+
+
 
 

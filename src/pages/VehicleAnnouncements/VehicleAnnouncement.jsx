@@ -9,6 +9,8 @@ import BlockIcon from '../../assets/icons/block.svg?react';
 import CancelIcon from '../../assets/icons/cancel.svg?react';
 import CheckIcon from '../../assets/icons/check.svg?react';
 import Back from '../../assets/icons/back.svg?react';
+import freightData from '../FreightAnnouncements/freightData.json'
+
 // import TruckIcon from '../../assets/icons/truckabout.svg?react';
 // import LocationIcon from '../../assets/icons/location.svg?react';
 
@@ -130,6 +132,9 @@ export default function VehicleAnnouncement() {
             </button>
           </div>
         </div>
+
+
+
 
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Yük maşını haqqında:</h2>
@@ -294,6 +299,3 @@ export default function VehicleAnnouncement() {
     </div>
   )
 }
-
-
-
