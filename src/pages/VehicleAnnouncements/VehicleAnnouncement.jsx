@@ -8,9 +8,9 @@ import BellIcon from '../../assets/icons/bell.svg?react';
 import BlockIcon from '../../assets/icons/block.svg?react';
 import CancelIcon from '../../assets/icons/cancel.svg?react';
 import CheckIcon from '../../assets/icons/check.svg?react';
-import TruckIcon from '../../assets/icons/truckabout.svg?react';
-import LocationIcon from '../../assets/icons/location.svg?react';
 import Back from '../../assets/icons/back.svg?react';
+// import TruckIcon from '../../assets/icons/truckabout.svg?react';
+// import LocationIcon from '../../assets/icons/location.svg?react';
 
 const ChevronDownIcon = () => (
   <svg
