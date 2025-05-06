@@ -169,7 +169,7 @@ export default function VehicleAnnouncement() {
           </div>
         </div>
 
-        <div className={styles.section}>
+        {/* <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Daşınma əlkələri:</h2>
           <div className={styles.routesContainer}>
             {transportRoutes.map((route, index) => (
@@ -196,7 +196,7 @@ export default function VehicleAnnouncement() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <Modal
         isOpen={isCancelModalOpen}

@@ -102,7 +102,6 @@ export default function EditModal({
                 name="fromDate"
                 value={editedData.fromDate}
                 onChange={handleChange}
-                required
               />
             </div>
             
@@ -113,11 +112,9 @@ export default function EditModal({
                 name="toDate"
                 value={editedData.toDate}
                 onChange={handleChange}
-                required
               />
             </div>
           </div>
-
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label>Yük növü:</label>
@@ -129,7 +126,6 @@ export default function EditModal({
                 required
               />
             </div>
-            
             <div className={styles.formGroup}>
               <label>Status:</label>
               <div className={styles.statusButtons}>
