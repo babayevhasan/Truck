@@ -303,13 +303,17 @@ export default function FreightAnnouncements() {
   const [editingItem, setEditingItem] = useState(null)
   const selectRef = useRef(null)
   
-  // LocalStorage'dan verileri yükle
   useEffect(() => {
     const savedData = localStorage.getItem('freightData')
     if (savedData) {
       setData(JSON.parse(savedData))
     }
   }, [])
+
+
+  const handleViewDetails = () => {
+    navigate("/vehicle-announcements/:id");
+  };
 
   const filteredData =
     selectedStatus === "Status seç"
@@ -570,7 +574,7 @@ export default function FreightAnnouncements() {
                 <div className={styles.cardFooter}>
                   <div className={styles.freightType}>{item.type}</div>
                   <div className={styles.cardActions}>
-                    <button className={styles.detailsButton}>Detallarına bax</button>
+                    <button onClick={handleViewDetails} className={styles.detailsButton}>Detallarına bax</button>
                     <div className={styles.cardActionButtons}>
                       <button 
                         onClick={() => handleDelete(item.id)}
