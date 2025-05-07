@@ -124,6 +124,14 @@ export default function VehicleAnnouncement() {
               <span className={styles.infoLabel}>Yük tutumu:</span>
               <span className={styles.infoValue}>13 ton</span>
             </div>
+            <div className={styles.infoRow}>
+              <span className={styles.infoLabel}>Həcmi:</span>
+              <span className={styles.infoValue}>93  m³</span>
+            </div>
+            <div className={styles.infoRow}>
+              <span className={styles.infoLabel}>Uzunluğu:</span>
+              <span className={styles.infoValue}>7.1  m</span>
+            </div>
           </div>
         </div>
       </div>
