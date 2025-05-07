@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import styles from "./FreightAnnouncements.module.css";
 import freightData from './freightData.json';
 import EditModal from './Edit/EditModal';
@@ -25,6 +24,20 @@ export default function FreightAnnouncements() {
     const savedData = localStorage.getItem('freightData');
     setData(savedData ? JSON.parse(savedData) : freightData);
   }, []);
+
+  // Scroll control when modals are open
+  useEffect(() => {
+    if (isEditModalOpen || isAddModalOpen) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Re-enable scrolling
+    }
+
+    // Cleanup the effect on modal close
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isEditModalOpen, isAddModalOpen]);
 
   const handleAddNewFreight = (newFreight) => {
     const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
