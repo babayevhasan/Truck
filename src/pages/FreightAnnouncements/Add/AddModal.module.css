@@ -13,10 +13,13 @@
   
   .modal {
     background: #f9f9f9;
-    padding: 30px;
     border-radius: 12px;
-    width: 700px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 10px;
+    width: 800px;
+    max-width: 95%;
+    max-height: 90vh;
   }
   
   .modal h2 {
@@ -51,15 +54,19 @@
     flex-wrap: wrap;
     margin-top: 5px;
   }
-  
-  .statusBtn {
-    padding: 8px 14px;
-    border-radius: 6px;
+  .statusButtons button{
+    padding: 8px;
     border: none;
-    background: #e0e0e0;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
   }
+  .statusBtn {
+  }
+  .statusAktiv { background: #4CAF50; color: white; }
+  .statusLəğv { background: #f44336; color: white; }
+  .statusBlok { background: #607d8b; color: white; }
+  .statusGözləmədə { background: #ff9800; color: white; }
   
   .activeStatus {
     background-color: #f44336;

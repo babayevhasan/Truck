@@ -13,7 +13,6 @@ export default function AddModal({ isOpen, onClose, onAdd }) {
     type: "",
     status: "Aktiv"
   })
-
   const statusOptions = ["Aktiv", "Ləğv", "Blok", "Gözləmədə"]
 
   const handleSubmit = (e) => {
@@ -21,13 +20,10 @@ export default function AddModal({ isOpen, onClose, onAdd }) {
     onAdd(newFreight)
     onClose()
   }
-
   const handleStatusChange = (status) => {
     setNewFreight({ ...newFreight, status })
   }
-
   if (!isOpen) return null
-
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
@@ -101,10 +97,10 @@ export default function AddModal({ isOpen, onClose, onAdd }) {
             <div className={styles.statusButtons}>
               {statusOptions.map((option) => (
                 <button
-                  type="button"
                   key={option}
-                  className={`${styles.statusBtn} ${
-                    newFreight.status === option ? styles.activeStatus : ""
+                  type="button"
+                  className={`${styles.statusButton} ${
+                    newFreight.status === option ? styles[`status${option}`] : ""
                   }`}
                   onClick={() => handleStatusChange(option)}
                 >
