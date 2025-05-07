@@ -9,7 +9,6 @@ import LeftNav from "../../assets/icons/leftnav.svg?react"
 import RightNav from "../../assets/icons/rightnav.svg?react"
 import vehicleData from '../VehicleAnnouncements/vehicleData.json'
 import EditModal from '../FreightAnnouncements/Edit/EditModal'
-
 const ChevronLeftIcon = () => (
   <svg
     className={styles.icon}
@@ -24,7 +23,6 @@ const ChevronLeftIcon = () => (
     <polyline points="15 18 9 12 15 6" />
   </svg>
 )
-
 const ChevronRightIcon = () => (
   <svg
     className={styles.icon}
@@ -54,7 +52,6 @@ const ChevronDownIcon = () => (
     <polyline points="6 9 12 15 18 9" />
   </svg>
 )
-
 export default function VehicleAnnouncements() {
   const [activeTab, setActiveTab] = useState("table")
   const [currentPage, setCurrentPage] = useState(1)
@@ -66,7 +63,6 @@ export default function VehicleAnnouncements() {
   const selectRef = useRef(null)
   const navigate = useNavigate()
 
-  // LocalStorage'dan verileri yükle
   useEffect(() => {
     const savedData = localStorage.getItem('vehicleData')
     if (savedData) {
@@ -82,13 +78,11 @@ export default function VehicleAnnouncements() {
         setIsSelectOpen(false)
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside)
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [])
-
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedStatus]);
@@ -96,23 +90,19 @@ export default function VehicleAnnouncements() {
   const toggleSelect = () => {
     setIsSelectOpen(!isSelectOpen)
   }
-
   const handleSelectOption = (option) => {
     setSelectedStatus(option)
     setIsSelectOpen(false)
   }
-
   const handleDelete = (id) => {
     const updatedData = data.filter(item => item.id !== id)
     setData(updatedData)
     localStorage.setItem('vehicleData', JSON.stringify(updatedData))
   }
-
   const handleEdit = (item) => {
     setEditingItem(item)
     setIsEditModalOpen(true)
   }
-
   const handleSave = (editedItem) => {
     const updatedData = data.map(item => 
       item.id === editedItem.id ? editedItem : item
@@ -121,7 +111,6 @@ export default function VehicleAnnouncements() {
     localStorage.setItem('vehicleData', JSON.stringify(updatedData))
     setIsEditModalOpen(false)
   }
-
   const getStatusClass = (status) => {
     switch (status) {
       case "Ləğv":
@@ -136,7 +125,6 @@ export default function VehicleAnnouncements() {
         return ""
     }
   }
-
   const filteredData =
     selectedStatus === "Status seç" ? data : data.filter((item) => item.status === selectedStatus)
 
@@ -175,7 +163,6 @@ export default function VehicleAnnouncements() {
       navigate(navItems[targetIndex].path);
     }
   }
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -193,7 +180,6 @@ export default function VehicleAnnouncements() {
           </button>
         </div>
       </div>
-
       <div className={styles.content}>
         <h1 className={styles.title}>Yük maşını elanları</h1>
 
@@ -310,7 +296,6 @@ export default function VehicleAnnouncements() {
             >
               <span className={`${styles.icon} ${styles.chevronLeft}`}><ChevronLeftIcon /> </span>
             </button>
-
             {Array.from({ length: 3 }, (_, i) => {
               const firstPage = Math.max(1, currentPage - 2);
               const page = firstPage + i;
@@ -324,7 +309,6 @@ export default function VehicleAnnouncements() {
                 </button>
               ) : null;
             })}
-
             <button
               className={styles.paginationButton}
               onClick={() => setCurrentPage(currentPage + 1)}
@@ -336,7 +320,6 @@ export default function VehicleAnnouncements() {
         </div>
       </div>
 
-      {/* Edit Modal */}
       {isEditModalOpen && (
         <EditModal
           item={editingItem}
