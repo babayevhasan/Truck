@@ -163,7 +163,19 @@
   transform: translateY(-50%);
   pointer-events: none;
 }
+.addButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 10px;
+}
 
+.addButton:hover {
+  opacity: 0.85;
+}
 .tableContainer {
   overflow-x: auto;
   min-height: 340px;

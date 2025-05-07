@@ -108,6 +108,6 @@ export default function App() {
 
 
 
-
+// add modal duzelt/deep/status
 
 
