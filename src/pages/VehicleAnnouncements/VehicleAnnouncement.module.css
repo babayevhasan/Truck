@@ -392,8 +392,9 @@
   .cancelButton,
   .approveButton {
     gap: 5px;
-    padding: 12px 2px;
+    font-size: 10px;
+    padding: 5px;
     border-radius: 0px;
-    font-weight: 100;
+    font-weight: 50;
   }
 }
