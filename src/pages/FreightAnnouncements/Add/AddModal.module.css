@@ -1,4 +1,4 @@
-.modalOverlay {
+/* .modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -59,4 +59,102 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  } */
+
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
   }
+  
+  .modal {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    width: 700px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .formGrid label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .formGrid input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .statusButtons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+  }
+  
+  .statusBtn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    background: #e0e0e0;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .activeStatus {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .buttonGroup {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .cancelButton {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  .saveButton {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
