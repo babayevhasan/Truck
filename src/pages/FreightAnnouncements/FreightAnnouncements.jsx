@@ -19,21 +19,18 @@ export default function FreightAnnouncements() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
 
-  // Data management
   useEffect(() => {
     const savedData = localStorage.getItem('freightData');
     setData(savedData ? JSON.parse(savedData) : freightData);
   }, []);
 
-  // Scroll control when modals are open
   useEffect(() => {
     if (isEditModalOpen || isAddModalOpen) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
+      document.body.style.overflow = "hidden"; 
     } else {
-      document.body.style.overflow = "auto"; // Re-enable scrolling
+      document.body.style.overflow = "auto"; 
     }
 
-    // Cleanup the effect on modal close
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -50,7 +47,6 @@ export default function FreightAnnouncements() {
     localStorage.setItem('freightData', JSON.stringify(newData));
   };
 
-  // Filter and pagination logic
   const filteredData = selectedStatus === "Status seç"
     ? data
     : data.filter(item => item.status === selectedStatus);
