@@ -1,149 +1,148 @@
 .profileContainer {
-  text-align: center;
-  /* max-width: 450px; */
+  max-width: 600px;
   margin: 0 auto;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 0px 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .profileInfo {
   display: flex;
-  /* width: 100%; */
-  /* padding: 0px 30px; */
-  /* margin: auto; */
   flex-direction: column;
-  min-height: 100vh;
   align-items: center;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .profileImageContainer {
   position: relative;
   width: 150px;
   height: 150px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #ddd;
+  margin-bottom: 1rem;
 }
+
 .profileImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+  border: 3px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .noImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #ccc;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  border: 2px dashed #ccc;
+}
+
+.uploadButton {
+  background-color: #3b82f6;
   color: white;
-  font-size: 16px;
-  text-align: center;
-}
-.imageInput {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  opacity: 0;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s;
 }
-.forgotPassword{
-  color: rgb(87, 87, 155);
+
+.uploadButton:hover {
+  background-color: #2563eb;
 }
+
+.imageInput {
+  display: none;
+}
+
 .inputContainer {
   width: 100%;
-  max-width: 350px;
+  margin-bottom: 1rem;
 }
+
 .inputContainer label {
   display: block;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 0.4rem;
+  color: #374151;
+  font-weight: 600;
 }
-.uploadButton {
-  padding: 5px 10px;
-  font-size: 13px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  background-color: #e7e7e7;
-  color: rgb(0, 0, 0);
-}
+
 .input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.2s, box-shadow 0.2s;
 }
+
 .input:focus {
-  border-color: #0056b3;
   outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
+
 .buttons {
   display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  margin-top: 1.5rem;
 }
+
 .updateProfileButton,
 .updatePasswordButton,
 .logoutButton {
-  padding: 10px;
-  font-size: 15px;
+  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
+
 .updateProfileButton {
-  background-color: #4caf50;
+  background-color: #10b981;
   color: white;
 }
+
 .updateProfileButton:hover {
-  background-color: #45a049;
+  background-color: #059669;
 }
-.logoutButton {
-  background-color: #f44336;
+
+.updatePasswordButton {
+  background-color: #f59e0b;
   color: white;
 }
-.logoutButton:hover {
-  background-color: #e53935;
+
+.updatePasswordButton:hover {
+  background-color: #d97706;
 }
-@media (max-width: 768px) {
-  .profileContainer {
-    padding: 15px;
-  }
-  .profileInfo {
-    padding: 15px;
-    width: 90%;
-    margin: auto;
-  }
-  .profileImageContainer {
-    width: 120px;
-    height: 120px;
-  }
-  .inputContainer {
-    margin-bottom: 12px;
-  }
-  .input {
-    padding: 10px;
-  }
-  .buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .updateProfileButton,
-  .logoutButton {
-    width: 100%;
-  }
+
+.logoutButton {
+  background-color: #ef4444;
+  color: white;
+}
+
+.logoutButton:hover {
+  background-color: #dc2626;
+}
+
+.forgotPassword {
+  margin-top: 1.2rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+  text-align: center;
+}
+
+.forgotPassword:hover {
+  color: #111827;
 }
