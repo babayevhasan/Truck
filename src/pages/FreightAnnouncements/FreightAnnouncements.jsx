@@ -56,7 +56,6 @@ export default function FreightAnnouncements() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
-  // CRUD operations
   const handleDelete = (id) => {
     updateData(data.filter(item => item.id !== id));
   };

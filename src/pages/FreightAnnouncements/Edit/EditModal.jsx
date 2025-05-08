@@ -42,7 +42,6 @@ export default function EditModal({
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2>Elanı Redaktə et</h2>
-          <button onClick={onClose} className={styles.closeButton}>×</button>
         </div>
         
         <form onSubmit={handleSubmit} className={styles.editForm}>
