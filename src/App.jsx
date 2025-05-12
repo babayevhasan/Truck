@@ -28,7 +28,6 @@ export default function App() {
             <Route element={<MainLayout />}>
               <Route path="/" index element={<Dashboard />} />
               <Route path="profile" element={< Profile />} />
-              {/* <Route path="/notifications" element={<Notifications />} /> */}
               <Route path="freight-announcements" element={<FreightAnnouncements />} />
               <Route path="vehicle-announcements" element={<VehicleAnnouncements />} />
               <Route path="vehicle-announcements/:id" element={<VehicleAnnouncement />} />
