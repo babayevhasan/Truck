@@ -7,14 +7,14 @@ export default function Notifications() {
 
   return (
     <div className={styles.container}>
-      <h2>Bildirimler</h2>
+      <h2>Bildirişlər</h2>
       <ul className={styles.list}>
         {notifications.length > 0 ? (
           notifications.map((notification, index) => (
             <li key={index}>{notification}</li>
           ))
         ) : (
-          <li>No notifications yet</li>
+          <li>Bildiriş yoxdur</li>
         )}
       </ul>
     </div>
