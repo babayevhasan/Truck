@@ -36,7 +36,7 @@ export default function Header() {
   }
 
   const goToNotifications = () => {
-    navigate("/notifications"); 
+    navigate("/messages"); 
   };
 
   return (

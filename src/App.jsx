@@ -28,11 +28,11 @@ export default function App() {
             <Route element={<MainLayout />}>
               <Route path="/" index element={<Dashboard />} />
               <Route path="profile" element={< Profile />} />
-              <Route path="/notifications" element={<Notifications />} />
+              {/* <Route path="/notifications" element={<Notifications />} /> */}
               <Route path="freight-announcements" element={<FreightAnnouncements />} />
               <Route path="vehicle-announcements" element={<VehicleAnnouncements />} />
               <Route path="vehicle-announcements/:id" element={<VehicleAnnouncement />} />
-              <Route path="messages" element={<div>Messages</div>} />
+              <Route path="messages" element={<Notifications />} />
               <Route path="operators" element={<div>Operators</div>} />
               <Route path="users" element={<div>Users</div>} />
               <Route path="transactions" element={<div>Transactions</div>} />
