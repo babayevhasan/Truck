@@ -1,6 +1,6 @@
-"use client"
 
-import { useState } from 'react';
+import React, { useState } from 'react'; 
+import { useNotifications } from "../../../context/NotificationContext"; 
 import styles from '../Edit/EditModal.module.css';
 
 export default function EditModal({ 
@@ -8,6 +8,7 @@ export default function EditModal({
   onClose, 
   onSave 
 }) {
+  const { addNotification } = useNotifications();
   const [editedData, setEditedData] = useState({
     id: item.id,
     fromLocation: item.fromLocation,
@@ -32,6 +33,7 @@ export default function EditModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     onSave(editedData);
+    addNotification(`Elan redaktə edildi: ${editedData.fromCountry} → ${editedData.toCountry}`);
     onClose();
   };
 
@@ -42,8 +44,7 @@ export default function EditModal({
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2>Elanı Redaktə et</h2>
-        </div>
-        
+        </div>        
         <form onSubmit={handleSubmit} className={styles.editForm}>
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
@@ -156,3 +157,5 @@ export default function EditModal({
     </div>
   );
 }
+
+
