@@ -7,10 +7,10 @@ import Modal from "../../components/ui/Modal/Modal"
 import freightData from '../FreightAnnouncements/freightData.json'
 
 import BackIcon from '../../assets/icons/back.svg?react';
-import BellIcon from '../../assets/icons/bell.svg?react';
 import BlockIcon from '../../assets/icons/block.svg?react';
 import CancelIcon from '../../assets/icons/cancel.svg?react';
 import CheckIcon from '../../assets/icons/check.svg?react';
+import Header from "../FreightAnnouncements/Header";
 
 export default function VehicleAnnouncement() {
   const navigate = useNavigate()
@@ -18,7 +18,7 @@ export default function VehicleAnnouncement() {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false)
   const [isBlockModalOpen, setIsBlockModalOpen] = useState(false)
   const [reasons, setReasons] = useState([{ id: 1, value: "" }])
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [setWindowWidth] = useState(window.innerWidth)
   const [currentFreight, setCurrentFreight] = useState(null)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function VehicleAnnouncement() {
     return () => window.removeEventListener("resize", handleResize)
   }, [id])
 
-  const handleBack = () => navigate("/vehicle-announcements")
+  // const handleBack = () => navigate("/vehicle-announcements")
   const handleAddReason = () => setReasons([...reasons, { id: reasons.length + 1, value: "" }])
 
   const handleReasonChange = (id, value) => {
@@ -44,13 +44,8 @@ export default function VehicleAnnouncement() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.notifications}>
-          <button className={styles.notificationButton}>
-            <BellIcon />
-          </button>
-        </div>
-      </div>
+   
+        <Header />
 
       <div className={styles.content}>
         <div className={styles.titleSection}>

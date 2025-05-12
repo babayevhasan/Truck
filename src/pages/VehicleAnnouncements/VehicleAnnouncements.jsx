@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./VehicleAnnouncements.module.css";
-import BellIcon from "../../assets/icons/bell.svg?react";
 import vehicleData from './vehicleData.json';
 import EditModal from '../FreightAnnouncements/Edit/EditModal';
 import { StatusFilter } from "../VehicleAnnouncements/StatusFilter";
-import { NavigationButtons } from "../VehicleAnnouncements/NavigationButtons";
 import { VehicleTable } from "../VehicleAnnouncements/VehicleTable";
 import { Pagination } from "../VehicleAnnouncements/Pagination";
+import Header from "../FreightAnnouncements/Header";
+
 
 const statusOptions = ["Status seç", "Aktiv", "Ləğv", "Blok", "Gözləmədə"];
 
@@ -122,14 +122,7 @@ export default function VehicleAnnouncements() {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <NavigationButtons onNavigate={handleNavigation} />
-        <div className={styles.notifications}>
-          <button className={styles.notificationButton}>
-            <BellIcon />
-          </button>
-        </div>
-      </div>
+         <Header />
       <div className={styles.content}>
         <h1 className={styles.title}>Yük maşını elanları</h1>
         <div className={styles.tabs}>
