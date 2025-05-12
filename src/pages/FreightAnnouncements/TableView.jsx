@@ -22,7 +22,7 @@ export default function TableView({ currentItems, handleDelete, handleEdit }) {
   const handleDeleteWithNotification = (id, fromCountry, toCountry) => {
     handleDelete(id)
     addNotification(`Elan silindi: ${fromCountry} → ${toCountry}`)
-  }
+  }  
 
   return (
     <div className={styles.tableContainer}>
