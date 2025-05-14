@@ -12,12 +12,12 @@ export default function Notifications() {
 
     const timer = setTimeout(() => {
       markAllAsRead();
-    }, 10000); 
+    }, 2000); 
 
     return () => clearTimeout(timer);
   }, [notifications, markAllAsRead]);
 
-  return (
+  return ( 
     <>
       <Header />
     <div className={styles.container}>
