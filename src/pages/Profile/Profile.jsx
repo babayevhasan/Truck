@@ -8,6 +8,7 @@ import ProfileInfoForm from "./ProfileInfoForm";
 import PasswordChangeForm from "./PasswordChangeForm";
 import ProfileButtons from "./ProfileButtons";
 import { updateUserInLocalStorage } from "./profileHelpers";
+import Header from "../FreightAnnouncements/Header";
 export default function Profile() {
   const { user, logout } = useAuth();
   const { addNotification } = useNotifications();
@@ -56,15 +57,17 @@ export default function Profile() {
     setConfirmPassword("");
   };
   return (
+    <>
+      <Header />
     <div className={`container mx-auto p-6 ${styles.profileContainer}`}>
       <div className={styles.profileInfo}>
         <ProfileImageSection
           profileImage={profileImage}
           onImageChange={handleImageChange}
-        />
+          />
         <ProfileInfoForm
           name={name} setName={setName} email={email} setEmail={setEmail}
-        />
+          />
         <PasswordChangeForm
           currentPassword={currentPassword}
           newPassword={newPassword}
@@ -72,13 +75,14 @@ export default function Profile() {
           setCurrentPassword={setCurrentPassword}
           setNewPassword={setNewPassword}
           setConfirmPassword={setConfirmPassword}
-        />
+          />
         <ProfileButtons
           onUpdateProfile={handleUpdateProfile}
           onUpdatePassword={handlePasswordChange}
           onLogout={handleLogout}
-        />
+          />
       </div>
     </div>
+          </>
   );
 }
