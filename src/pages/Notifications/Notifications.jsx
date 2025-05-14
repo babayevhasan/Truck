@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Notifications.module.css";
+import Header from "../FreightAnnouncements/Header";
 import { useNotifications } from "../../context/NotificationContext";
 
 export default function Notifications() {
@@ -11,12 +12,14 @@ export default function Notifications() {
 
     const timer = setTimeout(() => {
       markAllAsRead();
-    }, 2000); 
+    }, 10000); 
 
     return () => clearTimeout(timer);
   }, [notifications, markAllAsRead]);
 
   return (
+    <>
+      <Header />
     <div className={styles.container}>
       <h2>Bildirişlər</h2>
       <ul className={styles.list}>
@@ -29,6 +32,7 @@ export default function Notifications() {
         )}
       </ul>
     </div>
+        </>
   );
 }
 
