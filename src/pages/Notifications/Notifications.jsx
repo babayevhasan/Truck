@@ -1,16 +1,27 @@
-import React from "react"
-import styles from "./Notifications.module.css"
-import { useNotifications } from "../../context/NotificationContext"
+import React, { useEffect, useState } from "react";
+import styles from "./Notifications.module.css";
+import { useNotifications } from "../../context/NotificationContext";
 
 export default function Notifications() {
-  const { notifications } = useNotifications()
+  const { notifications, markAllAsRead } = useNotifications();
+  const [localNotifications, setLocalNotifications] = useState([]);
+
+  useEffect(() => {
+    setLocalNotifications(notifications);
+
+    const timer = setTimeout(() => {
+      markAllAsRead();
+    }, 2000); 
+
+    return () => clearTimeout(timer);
+  }, [notifications, markAllAsRead]);
 
   return (
     <div className={styles.container}>
       <h2>Bildirişlər</h2>
       <ul className={styles.list}>
-        {notifications.length > 0 ? (
-          notifications.map((notification, index) => (
+        {localNotifications.length > 0 ? (
+          localNotifications.map((notification, index) => (
             <li key={index}>{notification}</li>
           ))
         ) : (
@@ -18,5 +29,6 @@ export default function Notifications() {
         )}
       </ul>
     </div>
-  )
+  );
 }
+
