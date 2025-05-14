@@ -15,11 +15,6 @@ export const VehicleTable = ({
     addNotification(`Elan silindi: ${fromCountry} → ${toCountry}`);
   };
 
-  const handleEditWithNotification = (item) => {
-    handleEdit(item);
-    addNotification(`Elan redaktə edildi: ${item.fromCountry} → ${item.toCountry}`);
-  };
-
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
@@ -75,7 +70,7 @@ export const VehicleTable = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleEditWithNotification(item); 
+                      handleEdit(item); 
                     }}
                     className={styles.editButton}
                   >
