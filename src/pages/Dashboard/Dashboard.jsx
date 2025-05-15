@@ -6,6 +6,7 @@ const Dashboard = () => {
     <>
      <Header />
     <div>
+      dashboard page
     </div>
     </>
   );
