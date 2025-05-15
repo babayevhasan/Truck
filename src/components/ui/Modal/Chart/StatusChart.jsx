@@ -1,24 +1,18 @@
-
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer, Cell } from "recharts";
 
-const COLORS = ["#4E79A7", "#F28E2B", "#E15759", "#76B7B2", "#59A14F", "#EDC948", "#B07AA1", "#FF9DA7", "#9C755F", "#BAB0AC"];
+const COLORS = [
+  "#4E79A7", "#F28E2B", "#E15759", "#76B7B2", "#59A14F",
+  "#EDC948", "#B07AA1", "#FF9DA7", "#9C755F", "#BAB0AC"
+];
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    startAngle,
-    endAngle,
-    fill,
-    payload,
-    percent,
-    value,
+    cx, cy, midAngle, innerRadius, outerRadius,
+    startAngle, endAngle, fill, payload, percent, value,
   } = props;
+
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
@@ -31,9 +25,6 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill} style={{ fontWeight: 600, fontSize: 14 }}>
-        {payload.name}
-      </text>
       <Sector
         cx={cx}
         cy={cy}
@@ -69,6 +60,13 @@ const renderActiveShape = (props) => {
         fill="#999"
         style={{ fontSize: 12 }}
       >{`(${(percent * 100).toFixed(1)}%)`}</text>
+
+      <text x={cx} y={cy - 10} textAnchor="middle" fill="#666" fontSize={12}>
+        Total Items
+      </text>
+      <text x={cx} y={cy + 10} textAnchor="middle" fill="#2c3e50" fontSize={20} fontWeight={600}>
+        {props.totalValue}
+      </text>
     </g>
   );
 };
@@ -101,53 +99,33 @@ export default class StatusChart extends PureComponent {
     const totalValue = data.length;
 
     return (
-      <div style={{ 
-        width: "100%", 
+      <div style={{
+        width: "100%",
         maxWidth: 800,
         margin: "0 auto",
         fontFamily: "'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
         color: "#333"
       }}>
         <div style={{
-          background: "#fff",
-          borderRadius: 12,
-          padding: "5px 0px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-          marginBottom: 20,
-          textAlign: "center"
-        }}>
-          <div style={{
-            fontSize: 12,
-            color: "#666",
-            marginBottom: 4
-          }}>Total Items</div>
-          <div style={{
-            fontSize: 20,
-            fontWeight: 600,
-            color: "#2c3e50"
-          }}>{totalValue}</div>
-        </div>
-
-        <div style={{
           display: "flex",
           flexDirection: "column",
           gap: 5
         }}>
-          <div style={{ 
+          <div style={{
             background: "#fff",
             borderRadius: 12,
             boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
           }}>
-            <div style={{ 
-              width: "100%", 
-              height: 260,
+            <div style={{
+              width: "100%",
+              height: 300,
               position: 'relative'
             }}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     activeIndex={this.state.activeIndex}
-                    activeShape={renderActiveShape}
+                    activeShape={(props) => renderActiveShape({ ...props, totalValue })}
                     data={chartData}
                     cx="50%"
                     cy="50%"
@@ -158,7 +136,7 @@ export default class StatusChart extends PureComponent {
                     onMouseEnter={this.onPieEnter}
                   >
                     {chartData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      <Cell key={`cell-${index}`} fill={entry.fill} />
                     ))}
                   </Pie>
                 </PieChart>
@@ -166,7 +144,7 @@ export default class StatusChart extends PureComponent {
             </div>
           </div>
 
-          <div style={{ 
+          <div style={{
             background: "#fff",
             borderRadius: 12,
             padding: "16px 0",
@@ -185,13 +163,11 @@ export default class StatusChart extends PureComponent {
                   display: "flex",
                   alignItems: "center",
                   transition: "all 0.2s",
-                  cursor: "pointer",
-                  ":hover": {
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
-                  }
+                  cursor: "pointer"
                 }}
-                onMouseEnter={() => this.onPieEnter(null, chartData.findIndex(d => d.name === entry.name))}
+                  onMouseEnter={() =>
+                    this.onPieEnter(null, chartData.findIndex(d => d.name === entry.name))
+                  }
                 >
                   <div style={{
                     width: 12,
@@ -201,13 +177,13 @@ export default class StatusChart extends PureComponent {
                     flexShrink: 0
                   }}></div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ 
-                      fontSize: 13, 
+                    <div style={{
+                      fontSize: 13,
                       color: "#666",
                       marginBottom: 4
                     }}>{entry.name}</div>
-                    <div style={{ 
-                      fontSize: 18, 
+                    <div style={{
+                      fontSize: 18,
                       fontWeight: 600,
                       color: "#2c3e50",
                       display: "flex",
@@ -216,8 +192,8 @@ export default class StatusChart extends PureComponent {
                     }}>
                       {entry.value}
                     </div>
-                    <div style={{ 
-                      fontSize: 12, 
+                    <div style={{
+                      fontSize: 12,
                       color: "#7f8c8d"
                     }}>
                       {Math.round((entry.value / totalValue) * 100)}% of total
