@@ -247,9 +247,7 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
 }
-/* ==== sil ve edit butonları===== */
-
-/* Action Buttons */
+/* ==== sil ve edit==== */
 .actionButtons {
   display: flex;
   gap: 8px;
@@ -309,7 +307,6 @@
   background-color: #40a9ff;
 }
 
-/* Card Actions */
 .cardActions {
   display: flex;
   flex-direction: column;
@@ -320,17 +317,12 @@
   display: flex;
   gap: 8px;
 }
-/* ==== sil ve edit butonları===== */
-
-
+/* ==== sil ve edit==== */
 @media (min-width: 768px) {
   .cardsContainer {
     grid-template-columns: repeat(2, 1fr);
   }
-
-
 }
-
 @media (min-width: 1024px) {
   .cardsContainer {
     grid-template-columns: repeat(3, 1fr);
