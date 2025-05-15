@@ -12,27 +12,28 @@ export default function Notifications() {
 
     const timer = setTimeout(() => {
       markAllAsRead();
-    }, 2000); 
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [notifications, markAllAsRead]);
 
-  return ( 
+  return (
     <>
       <Header />
-    <div className={styles.container}>
-      <h2>Bildirişlər</h2>
-      <ul className={styles.list}>
-        {localNotifications.length > 0 ? (
-          localNotifications.map((notification, index) => (
-            <li key={index}>{notification}</li>
-          ))
-        ) : (
-          <li>Bildiriş yoxdur</li>
-        )}
-      </ul>
-    </div>
-        </>
+      <div className={styles.container}>
+        <h2>Bildirişlər</h2>
+        <ul className={styles.list}>
+          {localNotifications.length > 0 ? (
+            localNotifications.map((notification, index) => (
+              <li key={index}>{notification}</li>
+            ))
+          ) : (
+            <li>Bildiriş yoxdur</li>
+          )}
+        </ul>
+      </div>
+    </>
   );
 }
+
 
