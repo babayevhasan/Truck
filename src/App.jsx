@@ -11,6 +11,7 @@ import VehicleAnnouncement from "./pages/VehicleAnnouncements/VehicleAnnouncemen
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Notifications from "./pages/Notifications/Notifications";
 import Products from "./pages/Products/Products";
+// import Transactions from "./pages/Transactions/index";
 
 
 import Login from "./pages/registr/Login";
@@ -35,8 +36,8 @@ export default function App() {
               <Route path="vehicle-announcements/:id" element={<VehicleAnnouncement />} />
               <Route path="messages" element={<Notifications />} />
               <Route path="operators" element={<div>Operators</div>} />
-              <Route path="products" element={<Products/>} />
-              <Route path="transactions" element={<div>Transactions</div>} />
+              <Route path="products" element={<Products />} />
+              {/* <Route path="transactions" element={<Transactions />} /> */}
               <Route path="configuration" element={<div>Configuration</div>} />
             </Route>
           </Route>

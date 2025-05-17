@@ -1,9 +1,15 @@
-
-
- .productContainer {
+/* .productContainer {
     padding: 40px;
     background-color: #f4f4f4;
     min-height: 100vh;
+
+}
+
+.productContainer h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #333;
 }
 
 .productGrid {
@@ -19,28 +25,27 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 280px;
+    width: 250px;
     transition: transform 0.3s ease;
 }
 
 .productCard:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
+}
+
+.productCard h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.productCard p {
+    color: #555;
+    margin: 5px 0;
 }
 
 .price {
-    color: #d61010;
     font-weight: bold;
+    color: #d61010;
     font-size: 18px;
-}
-
-button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #ddd;
-}
+} */
