@@ -83,7 +83,7 @@ export default function Sidebar({ onToggle }) {
     { label: "Yük maşını elanları", path: "/vehicle-announcements", icon: <TruckIcon /> },
     { label: "Mesajlar", path: "/messages", icon: <MessageIcon /> },
     { label: "Operatorlar", path: "/operators", icon: <UsersIcon /> },
-    { label: "Məhsullar", path: "/products", icon: <UserIcon /> },
+    { label: "Daşınılan məhsullar", path: "/products", icon: <UserIcon /> },
     { label: "Tranzaksiya", path: "/transactions", icon: <IconSvg /> },
   ];
 
