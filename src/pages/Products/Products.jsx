@@ -81,23 +81,16 @@ const handleUpdate = () => {
         name: updatedName,
         description: updatedDescription,
         price: parseFloat(updatedPrice),
-        categoryId: editingProduct.categoryId,
+        categoryId: editingProduct.categoryId, 
     };
 
-    console.log('Gönderilen veri:', updatedProduct);
-    
     api.put(`/Product/${editingProduct.id}`, updatedProduct)
         .then(() => {
             fetchProducts();
             setEditingProduct(null);
         })
-        .catch((err) => {
-            console.error('Güncelleme hatası:', err.response ? err.response.data : err.message);
-        });
+        .catch((err) => console.log(err));
 };
-
-
-
     return (
         <div className={styles.productContainer}>
             <h2>Products</h2>
@@ -138,5 +131,4 @@ const handleUpdate = () => {
         </div>
     )
 }
-
 export default Products
