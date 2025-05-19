@@ -1,44 +1,172 @@
- .productContainer {
-    padding: 40px;
-    background-color: #f4f4f4;
-    min-height: 100vh;
+.productContainer {
+  /* max-width: 100px; */
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.productContainer h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #d61010;
 }
 
 .productGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 .productCard {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 280px;
-    transition: transform 0.3s ease;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.productCard:hover {
-    transform: translateY(-5px);
+.productCard h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.productCard p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #555;
 }
 
 .price {
-    color: #d61010;
-    font-weight: bold;
-    font-size: 18px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #d61010;
+  margin-bottom: 15px;
 }
 
-button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
+.productCard input[type="text"],
+.productCard input[type="number"],
+.productCard textarea {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.productCard input[type="text"]:focus,
+.productCard input[type="number"]:focus,
+.productCard textarea:focus {
+  border-color: #d61010;
+  outline: none;
+}
+
+.productCard button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #d61010;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.productCard button:hover {
+  background-color: #a40c0c;
+}
+
+.productCard > div {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+.addProductForm {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.addProductForm h3 {
+  margin-bottom: 10px;
+}
+
+.addProductForm input[type="text"],
+.addProductForm textarea,
+.addProductForm input[type="number"] {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.addProductForm button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #d61010;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+select {
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
     cursor: pointer;
+    background-size: 12px 8px;
 }
 
-button:hover {
-    background-color: #ddd;
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    border-color: #d61010;
+}
+
+option {
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+@media (max-width: 480px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productCard button {
+    flex: 1 1 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
