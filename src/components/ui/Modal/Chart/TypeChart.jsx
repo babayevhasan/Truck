@@ -1,4 +1,3 @@
-
 import React, { PureComponent } from "react";
 import {
     BarChart,
@@ -10,21 +9,23 @@ import {
     Legend,
     ResponsiveContainer,
 } from "recharts";
+
 const COLORS = ["#357bf7", "#82ca9d", "#ffc658", "#ff8042", "#00C49F"];
 
-export default class StatusBarChart extends PureComponent {
+export default class FromLocationBarChart extends PureComponent {
     render() {
         const { data } = this.props;
 
-        const statusCount = data.reduce((acc, curr) => {
-            acc[curr.status] = (acc[curr.status] || 0) + 1;
+        const fromLocationCount = data.reduce((acc, curr) => {
+            acc[curr.fromLocation] = (acc[curr.fromLocation] || 0) + 1;
             return acc;
         }, {});
 
-        const chartData = Object.entries(statusCount).map(([key, value]) => ({
+        const chartData = Object.entries(fromLocationCount).map(([key, value]) => ({
             name: key,
             value,
         }));
+
         return (
             <div style={{ width: "100%", height: 400 }}>
                 <ResponsiveContainer>
@@ -50,3 +51,5 @@ export default class StatusBarChart extends PureComponent {
         );
     }
 }
+
+
