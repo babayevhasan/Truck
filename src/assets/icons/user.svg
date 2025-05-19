@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="3" y="5" width="14" height="11" stroke="currentColor" stroke-width="1.5" fill="none" />
-  <line x1="3" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.5" />
-  <line x1="10" y1="5" x2="10" y2="16" stroke="currentColor" stroke-width="1.5" />
+  <path d="M19 3H1v6h1v11c0 1.105.895 2 2 2h14c1.105 0 2-.895 2-2V9h1V3zM3 5h14v2H3V5zm13 15H4V9h12v11zM8 11h4c0 1.105-.895 2-2 2-1.105 0-2-.895-2-2z" 
+        stroke="currentColor" 
+        stroke-width="1.5" 
+        fill="none"/>
 </svg>
