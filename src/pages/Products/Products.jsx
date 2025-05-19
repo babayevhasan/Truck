@@ -159,9 +159,6 @@
 
 
 
-
-
-
 import React, { useEffect, useState } from 'react';
 import styles from './Products.module.css';
 import Header from "../FreightAnnouncements/Header";
@@ -179,11 +176,9 @@ const Products = () => {
     const [newProductDescription, setNewProductDescription] = useState('');
     const [newProductPrice, setNewProductPrice] = useState('');
 
-    // İlk select'te parent kategorilerden sadece alt kategori (subCategories) olanlar gösterilecek
     const [selectedParentCategoryId, setSelectedParentCategoryId] = useState('');
     const [selectedChildCategoryId, setSelectedChildCategoryId] = useState('');
 
-    // İkinci select'teki alt kategoriler
     const [childCategories, setChildCategories] = useState([]);
 
     useEffect(() => {
@@ -203,16 +198,14 @@ const Products = () => {
             .catch((err) => console.log(err));
     };
 
-    // Parent kategorilerden sadece içinde alt kategori (subCategories) olanları seçiyoruz
     const parentCategoriesWithSub = categories.filter(cat => cat.subCategories && cat.subCategories.length > 0);
 
-    // Parent category seçilince onun çocukları (subCategories) set edilecek
     useEffect(() => {
         if (selectedParentCategoryId) {
             const parentCat = categories.find(cat => cat.id === parseInt(selectedParentCategoryId));
             if (parentCat && parentCat.subCategories) {
                 setChildCategories(parentCat.subCategories);
-                setSelectedChildCategoryId(''); // Alt kategori seçimini sıfırla
+                setSelectedChildCategoryId('');
             } else {
                 setChildCategories([]);
                 setSelectedChildCategoryId('');
@@ -312,7 +305,6 @@ const Products = () => {
                         onChange={(e) => setNewProductPrice(e.target.value)}
                     />
 
-                    {/* 1. select: sadece subCategories içeren parent kategoriler */}
                     <select
                         value={selectedParentCategoryId}
                         onChange={(e) => setSelectedParentCategoryId(e.target.value)}
@@ -323,7 +315,6 @@ const Products = () => {
                         ))}
                     </select>
 
-                    {/* 2. select: seçilen parent'ın alt kategorileri */}
                     {childCategories.length > 0 && (
                         <select
                             value={selectedChildCategoryId}
