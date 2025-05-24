@@ -107,7 +107,7 @@ const Products = () => {
             categoryId: editingProduct.category?.id || editingProduct.categoryId || 1
         };
 
-        console.log("Güncellenen veri:", updatedProduct); // kontrol için
+        console.log("Güncellenen veri:", updatedProduct); 
 
         api.put(`/Product/${editingProduct.id}`, updatedProduct)
             .then(() => {
@@ -116,10 +116,6 @@ const Products = () => {
             })
             .catch((err) => console.log("PUT hatası:", err));
     };
-
-
-
-
     return (
         <>
             <Header />

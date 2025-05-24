@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
-import { useNotifications } from "../../context/NotificationContext"; 
+import { useNotifications } from "../../context/NotificationContext";
 import LeftNav from "../../assets/icons/leftnav.svg?react";
 import RightNav from "../../assets/icons/rightnav.svg?react";
 import Bell from "../../assets/icons/bell.svg?react";
@@ -15,12 +15,13 @@ const navItems = [
   { path: "/messages" },
   { path: "/operators" },
   { path: "/users" },
+  { path: "/products" },
   { path: "/transactions" },
 ];
 
 export default function Header() {
   const navigate = useNavigate();
-  const { notifications } = useNotifications(); 
+  const { notifications } = useNotifications();
 
   const handleNavigation = (direction) => {
     const currentIndex = navItems.findIndex(item =>
