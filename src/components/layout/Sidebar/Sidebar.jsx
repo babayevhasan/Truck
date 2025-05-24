@@ -84,7 +84,7 @@ export default function Sidebar({ onToggle }) {
     { label: "Mesajlar", path: "/messages", icon: <MessageIcon /> },
     { label: "Operatorlar", path: "/operators", icon: <UsersIcon /> },
     { label: "Daşınılan məhsullar", path: "/products", icon: <UserIcon /> },
-    // { label: "Tranzaksiya", path: "/transactions", icon: <IconSvg /> },
+    { label: "Tranzaksiya", path: "/transactions", icon: <IconSvg /> },
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);

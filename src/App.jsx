@@ -11,7 +11,7 @@ import VehicleAnnouncement from "./pages/VehicleAnnouncements/VehicleAnnouncemen
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Notifications from "./pages/Notifications/Notifications";
 import Products from "./pages/Products/Products";
-// import Transactions from "./pages/Transactions/index";
+import Transactions from "./pages/Transactions/Transactions";
 
 
 import Login from "./pages/registr/Login";
@@ -37,7 +37,7 @@ export default function App() {
               <Route path="messages" element={<Notifications />} />
               <Route path="operators" element={<div>Operators</div>} />
               <Route path="products" element={<Products />} />
-              {/* <Route path="transactions" element={<Transactions />} /> */}
+              <Route path="transactions" element={<Transactions />} />
               <Route path="configuration" element={<div>Configuration</div>} />
             </Route>
           </Route>
